@@ -1,0 +1,33 @@
+<template name="navigation">
+    {{#if currentUser}}
+    <aside id="menu">
+        <div id="navigation">
+            <div class="profile-picture">
+                <a href="{{pathFor route='dashboard'}}">
+                    <img src="images/profile.jpg" class="img-circle m-b" alt="logo">
+                </a>
+
+                <div class="stats-label text-color">
+                    <span class="font-extra-bold font-uppercase">Nombre usuario</span>
+
+                    <div>
+                        <h4 class="font-extra-bold m-b-xs">
+                            Licencia activa
+                        </h4>
+                        <small class="text-muted">Expira el dia 24-02-2016</small>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav" id="side-menu">
+                <li class="{{isActiveRoute regex='dashboard'}}">
+                    <a href="{{pathFor route='dashboard'}}"> <span class="nav-label">Dashboard</span></a>
+                </li>
+                <li class="{{isActiveRoute regex='profile'}}">
+                    <a href="{{pathFor route='profile'}}"> <span class="nav-label">Perfil</span></a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    {{/if}}
+</template>

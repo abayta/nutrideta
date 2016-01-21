@@ -1,0 +1,39 @@
+<template name="login">
+
+    <div class="back-link">
+        <a href="{{pathFor route='login'}}" class="btn btn-primary">Volver a la p&aacute;gina principal</a>
+    </div>
+
+    <div class="login-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center m-b-md">
+                    <h3>Identificarse en Nutrideta.com</h3>
+                    <small>La plataforma preferida de los dietistas</small>
+                </div>
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label class="control-label" for="username">Email</label>
+                                <input type="email" title="Inserta el correo electronico" required="" value="" name="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Contrase&ntilde;a</label>
+                                <input type="password" title="Inserta la contrase&ntilde;a" required="" value="" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" class="i-checks" checked>
+                                Recordar
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                            <a class="btn btn-default btn-block" href="{{pathFor route='register'}}">Registro</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+

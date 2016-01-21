@@ -1,0 +1,33 @@
+<template name="pageHeader">
+
+    <div class="normalheader transition {{#if small}} small-header {{/if}}">
+        <div class="hpanel">
+            <div class="panel-body">
+                {{#unless small}}
+                    <a class="small-header-action">
+                        <div class="clip-header">
+                            <i class="fa fa-arrow-up"></i>
+                        </div>
+                    </a>
+                {{/unless}}
+
+                <div id="hbreadcrumb" class="pull-right {{#unless small}} m-t-lg {{/unless}}">
+                    <ol class="hbreadcrumb breadcrumb">
+                        <li><a href="{{pathFor route='dashboard'}}">Home</a></li>
+                        <li>
+                            <span>{{category}}</span>
+                        </li>
+                        <li class="active">
+                            <span>{{title}}</span>
+                        </li>
+                    </ol>
+                </div>
+                <h2 class="font-light m-b-xs">
+                    {{title}}
+                </h2>
+                <small>{{desc}}</small>
+            </div>
+        </div>
+    </div>
+
+</template>
