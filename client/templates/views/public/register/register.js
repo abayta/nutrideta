@@ -49,8 +49,25 @@ if (Meteor.isClient) {
             if (error == false) {
 
                 //Crear usuario
-
-                Router.go('/login');
+                var user = {email:email,
+                    password:password,
+                    perfil:{nombre:nombre,
+                        apellidos:apellidos,
+                        usuario:usuario,
+                        direccion:direccion,
+                        codigoPostal:codigoPostal}};
+                Accounts.createUser(user,function(err){
+                    if(err) {
+                        swal({
+                            title: "¡Error!",
+                            text: "Ha ocurrido un error a la hora de crear la cuenta",
+                            type: "error",
+                            html: true
+                        });
+                    } else {
+                        Router.go('/login');
+                    }
+                });
             }
         }
     });
