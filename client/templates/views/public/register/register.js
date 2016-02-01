@@ -29,7 +29,7 @@ if (Meteor.isClient) {
 					errorArray.push(todosArray[obj][0]);
 				}
             }
-			
+
             if (errorArray.length > 0) {
 				var cadena = '';
 				for (elem in errorArray){
@@ -38,7 +38,7 @@ if (Meteor.isClient) {
 
                 swal({
                     title: "¡Error de validación!",
-                    text: "Los siguientes campos obligatorios que no están rellenos:<br>"+cadena,
+                    text: "Los siguientes campos obligatorios no están rellenos:<br>"+cadena,
                     type: "warning",
 					html: true
                 });
@@ -47,18 +47,27 @@ if (Meteor.isClient) {
             }
 
             if (error == false) {
-                Accounts.createUser({
-                    nombre: nombre,
-                    apellidos: apellidos,
-                    usuario: usuario,
-                    email: email,
-                    password: password,
-                    repeatPassword: repeatPassword,
-                    direccion: direccion,
-                    codigoPostal: codigoPostal
-                });
 
-                Router.go('/login');
+                //Crear usuario
+                var user = {email:email,
+                    password:password,
+                    perfil:{nombre:nombre,
+                        apellidos:apellidos,
+                        usuario:usuario,
+                        direccion:direccion,
+                        codigoPostal:codigoPostal}};
+                Accounts.createUser(user,function(err){
+                    if(err) {
+                        swal({
+                            title: "¡Error!",
+                            text: "Ha ocurrido un error a la hora de crear la cuenta",
+                            type: "error",
+                            html: true
+                        });
+                    } else {
+                        Router.go('/login');
+                    }
+                });
             }
         }
     });
