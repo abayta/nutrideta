@@ -11,53 +11,62 @@ if (Meteor.isClient) {
 
     Template.register.events({
         'submit #registerForm': function (event) {
+
             event.preventDefault();
+
             var error = false;
 
-            var nombre = $('[name=nombre]').val();
-            var apellidos = $('[name=apellidos]').val();
-            var usuario = $('[name=usuario]').val();
-            var email = $('[name=email]').val();
-            var password = $('[name=password]').val();
-            var repeatPassword = $('[name=repeatPassword]').val();
-            var direccion = $('[name=direccion]').val();
-            var codigoPostal = $('[name=codigoPostal]').val();
-            var todosArray = [['Nombre',nombre],['Apellidos',apellidos],['Usuario',usuario],['Email',email],['Contraseña',password],['Repetir contraseña',repeatPassword],['Direccion',direccion],['Codigo Postal',codigoPostal]];
-			var errorArray = [];
-            for (obj in todosArray){
+            var email = event.target.email.value;
+            var password = event.target.password.value;
+            var nombre = event.target.nombre.value;
+            var apellidos = event.target.apellidos.value;
+            var usuario = event.target.usuario.value;
+            var repeatPassword = event.target.repeatPassword.value;
+            var direccion = event.target.direccion.value;
+            var codigoPostal = event.target.codigoPostal.value;
+
+            //Comprobamos los campos que sean obligatorios
+            var todosArray = [['Nombre', nombre], ['Apellidos', apellidos], ['Usuario', usuario], ['Email', email], ['Contraseña', password], ['Repetir contraseña', repeatPassword], ['Direccion', direccion], ['Codigo Postal', codigoPostal]];
+            var errorArray = [];
+            for (obj in todosArray) {
                 if (todosArray[obj][1] == "") {
-					errorArray.push(todosArray[obj][0]);
-				}
+                    errorArray.push(todosArray[obj][0]);
+                }
             }
 
             if (errorArray.length > 0) {
-				var cadena = '';
-				for (elem in errorArray){
-					cadena+=errorArray[elem]+'<br>';
-				}
+                var cadena = '';
+                for (elem in errorArray) {
+                    cadena += errorArray[elem] + '<br>';
+                }
 
+                //Lanzamos alert con el tipo de error
                 swal({
                     title: "¡Error de validación!",
-                    text: "Los siguientes campos obligatorios no están rellenos:<br>"+cadena,
+                    text: "Los siguientes campos obligatorios no están rellenos:<br>" + cadena,
                     type: "warning",
-					html: true
+                    html: true
                 });
                 error = true;
                 return false;
             }
 
             if (error == false) {
+                var user = {
+                    'email': email, password: password, profile: {
+                        nombre: nombre,
+                        apellidos: apellidos,
+                        usuario: usuario,
+                        direccion: direccion,
+                        codigoPostal: codigoPostal
+                    }
+                };
 
-                //Crear usuario
-                var user = {email:email,
-                    password:password,
-                    perfil:{nombre:nombre,
-                        apellidos:apellidos,
-                        usuario:usuario,
-                        direccion:direccion,
-                        codigoPostal:codigoPostal}};
-                Accounts.createUser(user,function(err){
-                    if(err) {
+
+
+                //Creamos el usuario con los atributos que recogemos por formulario
+                var id = Accounts.createUser(user, function (err) {
+                    if (err) {
                         swal({
                             title: "¡Error!",
                             text: "Ha ocurrido un error a la hora de crear la cuenta",
@@ -65,7 +74,20 @@ if (Meteor.isClient) {
                             html: true
                         });
                     } else {
+
+                        //Añadimos los roles
+/*                        if (user.roles.length > 0) {
+                            // Need _id of existing user record so this call must come
+                            // after `Accounts.createUser` or `Accounts.onCreate`
+                            Roles.addUsersToRoles(id, 'free', 'nutricionista');
+                        }*/
+
                         Router.go('/login');
+                        swal({
+                            title: "¡Usuario creado satisfactoriamente!",
+                            text: "Bienvenido a Nutrideta.com",
+                            type: "success"
+                        });
                     }
                 });
             }
