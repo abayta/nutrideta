@@ -26,7 +26,7 @@ if (Meteor.isClient) {
             var codigoPostal = event.target.codigoPostal.value;
 
             //Comprobamos los campos que sean obligatorios
-          /*  var todosArray = [['Nombre', nombre], ['Apellidos', apellidos], ['Usuario', usuario], ['Email', email], ['Contraseña', password], ['Repetir contraseña', repeatPassword], ['Direccion', direccion], ['Codigo Postal', codigoPostal]];
+            var todosArray = [['Nombre', nombre], ['Apellidos', apellidos], ['Usuario', usuario], ['Email', email], ['Contraseña', password], ['Repetir contraseña', repeatPassword], ['Direccion', direccion], ['Codigo Postal', codigoPostal]];
             var errorArray = [];
             for (obj in todosArray) {
                 if (todosArray[obj][1] == "") {
@@ -49,7 +49,7 @@ if (Meteor.isClient) {
                 });
                 error = true;
                 return false;
-            }*/
+            }
 
             if (error == false) {
                 var user = {
@@ -61,7 +61,6 @@ if (Meteor.isClient) {
                         codigoPostal: codigoPostal
                     }
                 };
-
 
 
                 //Creamos el usuario con los atributos que recogemos por formulario
@@ -76,7 +75,7 @@ if (Meteor.isClient) {
                     } else {
 
                         //Llamamos al metodo de añadir los roles
-                        Meteor.call('addUserRoleFreeNutritionist', user);
+                        Meteor.call('addUserRoleFreeNutritionist', Meteor.userId());
 
                         Router.go('/login');
                         swal({
