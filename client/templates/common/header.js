@@ -1,12 +1,26 @@
 Template.header.events({
 
-    // Cierra sesi�n
+    // Cierra sesion
     'click #logout': function(event){
         event.preventDefault();
 
-        Meteor.logout();
-
-        Router.go('/login');
+        Meteor.logout(function(error){
+            if(error){
+                swal({
+                    title: "¡Error!",
+                    text: "No puedes cerrar sesión, inténtalo más tarde",
+                    type: "error"
+                });
+            } else {
+                Router.go('/login');
+                swal({
+                    title: "¡Hasta la próxima!",
+                    text: "Has cerrado sesión correctamente",
+                    timer: 2000,
+                    type: "success"
+                });
+            }
+        });
     },
 
     'click .hide-menu': function (event) {

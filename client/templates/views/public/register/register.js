@@ -26,7 +26,7 @@ if (Meteor.isClient) {
             var codigoPostal = event.target.codigoPostal.value;
 
             //Comprobamos los campos que sean obligatorios
-            var todosArray = [['Nombre', nombre], ['Apellidos', apellidos], ['Usuario', usuario], ['Email', email], ['Contraseña', password], ['Repetir contraseña', repeatPassword], ['Direccion', direccion], ['Codigo Postal', codigoPostal]];
+          /*  var todosArray = [['Nombre', nombre], ['Apellidos', apellidos], ['Usuario', usuario], ['Email', email], ['Contraseña', password], ['Repetir contraseña', repeatPassword], ['Direccion', direccion], ['Codigo Postal', codigoPostal]];
             var errorArray = [];
             for (obj in todosArray) {
                 if (todosArray[obj][1] == "") {
@@ -49,7 +49,7 @@ if (Meteor.isClient) {
                 });
                 error = true;
                 return false;
-            }
+            }*/
 
             if (error == false) {
                 var user = {
@@ -65,7 +65,7 @@ if (Meteor.isClient) {
 
 
                 //Creamos el usuario con los atributos que recogemos por formulario
-                var id = Accounts.createUser(user, function (err) {
+                Accounts.createUser(user, function (err) {
                     if (err) {
                         swal({
                             title: "¡Error!",
@@ -75,17 +75,14 @@ if (Meteor.isClient) {
                         });
                     } else {
 
-                        //Añadimos los roles
-/*                        if (user.roles.length > 0) {
-                            // Need _id of existing user record so this call must come
-                            // after `Accounts.createUser` or `Accounts.onCreate`
-                            Roles.addUsersToRoles(id, 'free', 'nutricionista');
-                        }*/
+                        //Llamamos al metodo de añadir los roles
+                        Meteor.call('addUserRoleFreeNutritionist', user);
 
                         Router.go('/login');
                         swal({
                             title: "¡Usuario creado satisfactoriamente!",
                             text: "Bienvenido a Nutrideta.com",
+                            timer: 2000,
                             type: "success"
                         });
                     }
