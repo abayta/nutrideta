@@ -58,13 +58,25 @@ Router.route('/profile', function () {
 });
 
 //
+// Profile edit route
+//
+
+Router.route('/profileEdit', function () {
+    name: 'profileEdit',
+        this.render('profileEdit', {
+            data: function () {
+                return Meteor.users.findOne({_id: Meteor.userId()});
+            }
+        });
+});
+
+
+//
 // Global - Remove splash screen after rendered layout
 //
 
-Router.onAfterAction(function()
-{
-    setTimeout(function()
-    {
+Router.onAfterAction(function () {
+    setTimeout(function () {
         $('.splash').css('display', 'none')
     })
 });

@@ -47,7 +47,7 @@ Meteor.startup(function () {
                 }
             });
 
-            Roles.addUsersToRoles(id, userData.roles);
+            Roles.addUsersToRoles(id, userData.roles, 'nutricionista');
 
         });
     }
@@ -57,18 +57,43 @@ Meteor.startup(function () {
 
 Meteor.methods({
 
-    //@Method añade roles al usuario pasado por id
-    addUserRole: function (id, rol) {
-        Roles.addUsersToRoles(user, rol);
+    //@Method envia un correo al registrarte en la pagina
+    sendRegisterEmail: function (to, name) {
+        check([to, name], [String]);
+
+        // Let other method calls from the same client start running,
+        // without waiting for the email sending to complete.
+        this.unblock();
+
+        Email.send({
+            to: to,
+            from: 'info@nutrideta.com',
+            subject: 'Bienvenid@ a nutrideta.com',
+            text: 'Gracias ' + name + ' por unirte al equipo de nutrideta.com'
+        });
     },
 
-    //@Method añade el rol 'free' al usuario pasado por id
+    //@Method añade roles y grupo al usuario pasado por id
+    addUserRole: function (id, rol, grupo) {
+        check(id, String);
+        Roles.addUsersToRoles(user, rol, grupo);
+    },
+
+    //@Method añade el rol 'free' y el grupo 'nutricionista' al usuario pasado por id
     addUserRoleFreeNutritionist: function (id) {
-        Roles.addUsersToRoles(id, 'free');
+        check(id, String);
+        Roles.addUsersToRoles(id, 'free', 'nutricionista');
     },
 
-    //@Method añade el rol 'paid' al usuario pasado por id
+    //@Method añade el rol 'paid' y el grupo 'nutricionista' al usuario pasado por id
     addUserRolePaidNutritionist: function (id) {
-        Roles.addUsersToRoles(user, 'paid');
+        check(id, String);
+        Roles.addUsersToRoles(user, 'paid', 'nutricionista');
+    },
+
+    //@Method añade el rol 'user' y el grupo 'usuario' al usuario pasado por id
+    addUserRoleUser: function (id) {
+        check(id, String);
+        Roles.addUsersToRoles(user, 'user', 'usuario');
     },
 });

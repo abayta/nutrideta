@@ -77,6 +77,9 @@ if (Meteor.isClient) {
                         //Llamamos al metodo de añadir los roles
                         Meteor.call('addUserRoleFreeNutritionist', Meteor.userId());
 
+                        //Mandamos mensaje de bienvenida
+                        Meteor.call('sendRegisterEmail', email, nombre);
+
                         Router.go('/login');
                         swal({
                             title: "¡Usuario creado satisfactoriamente!",
