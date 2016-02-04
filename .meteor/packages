@@ -8,10 +8,8 @@ iron:router
 less
 jquery
 twbs:bootstrap
-zimme:iron-router-active
 natestrauser:animate-css
 okgrow:iron-router-autoscroll
-kevohagan:sweetalert
 chrismbeckett:toastr
 fortawesome:fontawesome
 accounts-password
@@ -41,3 +39,7 @@ npm-container
 cfs:standard-packages
 minimongo
 msavin:mongol
+aldeed:simple-schema
+aldeed:autoform
+kevohagan:sweetalert
+zimme:iron-router-active
