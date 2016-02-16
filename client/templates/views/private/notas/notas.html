@@ -1,0 +1,157 @@
+<template name="notas">
+
+    {{> pageHeader title="Notas" desc="La sección de notas sirve para anotar algo que desees recordar" category="App views" }}
+
+
+    {{#staggering}}
+
+        <div class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="hpanel panel-group">
+                        <div class="panel-body">
+                            <div class="text-center text-muted font-bold">Buscar o crear nueva nota</div>
+
+                        </div>
+                        <div class="panel-section">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Buscar nota...">
+                           <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-toggle="modal"
+                                        data-target="#createModal"><i
+                                        class="glyphicon glyphicon-plus small"></i></button>
+                           </span>
+                            </div>
+                            <button type="button" data-toggle="collapse" data-target="#notes"
+                                    class="btn-sm visible-xs visible-sm btn-default btn btn-block m-t-sm collapsed"
+                                    aria-expanded="false">
+                                Ver todas<i class="fa fa-angle-down"></i>
+                            </button>
+                        </div>
+
+                        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="color-line"></div>
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title">Añadir nueva nota</h4>
+                                        <small class="font-bold">Sólo tiene que añadir un título y una descripción
+                                            de la nota
+                                        </small>
+                                    </div>
+                                    <form id="createNotasForm">
+                                        <div class="modal-body">
+                                            <label class="control-label text-center">Título</label>
+                                            <input type="text" id="titulo" name="titulo" class="form-control"
+                                                   maxlength="40">
+                                            <br>
+                                            <label class="control-label text-center">Descripción</label>
+                                            <div class="summernote" id="summernote1">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="cerrarBtn1" class="btn btn-default" data-dismiss="modal">
+                                                Cerrar
+                                            </button>
+                                            <button type="submit" id="guardar" class="btn btn-primary">Guardar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="color-line"></div>
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title">Editar nota</h4>
+                                        <small class="font-bold">Sólo tiene que añadir un título y una descripción
+                                            de la nota
+                                        </small>
+                                    </div>
+                                    <form id="editNotasForm">
+                                        <div class="modal-body">
+                                            <label class="control-label text-center">Título</label>
+                                            <input type="text" id="tituloEdit" name="titulo" class="form-control"
+                                                   maxlength="40">
+                                            <br>
+                                            <label class="control-label text-center">Descripción</label>
+                                            <div class="summernote" id="summernote2">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="cerrarBtn2" class="btn btn-default" data-dismiss="modal">
+                                                Cerrar
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">Guardar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="notes" class="collapse">
+
+                            {{#each nota}}
+
+                                <div class="panel-body note-link">
+                                    <a href="#{{_id}}" data-toggle="tab">
+                                        <small class="pull-right text-muted">{{createdAt}}</small>
+                                        <h5>{{titulo}}</h5>
+                                    </a>
+                                </div>
+                            {{/each}}
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="hpanel">
+
+                        <div class="panel-body">
+
+                            <div class="text-center hidden">
+                                No se han encontrado resultados.
+                            </div>
+
+
+                            <div class="tab-content">
+                                {{#each nota}}
+                                    <div id="{{_id}}" class="tab-pane">
+                                        <div class="pull-right text-muted m-l-lg">
+                                            <a id="fechaNota">{{createdAt}}</a>
+                                        </div>
+                                        <h3 id="tituloNota">{{titulo}}</h3>
+                                        <hr/>
+                                        <div class="note-content">
+                                            <a id="descripcionNota">{{{descripcion}}}</a>
+                                        </div>
+                                        <hr>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-default" id="editar" data-toggle="modal"
+                                                    data-target="#editModal"><i class="fa fa-thumbs-o-up"></i>
+                                                Editar
+                                            </button>
+                                            <button class="btn btn-sm btn-default"><i class="fa fa-trash"></i> Borrar
+                                            </button>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {{/staggering}}
+</template>

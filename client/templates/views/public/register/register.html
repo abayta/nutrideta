@@ -1,0 +1,61 @@
+<template name="register">
+
+    <div class="back-link">
+        <a href="{{pathFor route='login'}}" class="btn btn-primary">Volver a la p&aacute;gina principal</a>
+    </div>
+
+    <div class="register-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center m-b-md">
+                    <h3>Registrarse en Nutrideta.com</h3>
+                    <small>Nutrideta es un un sitio web en el que puedes controlar a tus clientes y hacer un seguimiento exhaustivo de estos. </small>
+                </div>
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <form id="registerForm">
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label>Nombre</label>
+                                    <input type="text" value="" id="nombre" class="form-control" name="nombre">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Apellidos</label>
+                                    <input type="text" value="" id="apellidos" class="form-control" name="apellidos">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Usuario</label>
+                                    <input type="text" value="" id="usuario" class="form-control" name="usuario">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Email</label>
+                                    <input type="email" name="email" id="email"  class="form-control" aria-required="true">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Contrase&ntilde;a</label>
+                                    <input type="password" value="" id="password" class="form-control" name="password">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Repetir contrase&ntilde;a</label>
+                                    <input type="password" value="" id="repeatPassword" class="form-control" name="repeatPassword">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Direcci&#243;n</label>
+                                    <input type="text" value="" id="direccion" class="form-control" name="direccion">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>C&#243;digo postal</label>
+                                    <input type="text" value="" id="codigoPostal" class="form-control" name="codigoPostal">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Registro</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
