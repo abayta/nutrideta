@@ -9,7 +9,14 @@
 
                     <div class="stats-label text-color">
                         <span class="font-extra-bold font-uppercase">Nombre usuario</span>
-
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                <small class="text-muted">Nutricionista<b class="caret"></b></small>
+                            </a>
+                            <ul class="dropdown-menu animated flipInX m-t-xs">
+                                <li><a href="{{pathFor route='profileEdit'}}">Editar perfil</a></li>
+                            </ul>
+                        </div>
                         <div>
                             <h4 class="font-extra-bold m-b-xs">
                                 {{#if isInRole 'free'}}
@@ -38,6 +45,9 @@
                     </li>
                     <li class="{{isActiveRoute regex='notas'}}">
                         <a href="{{pathFor route='notas'}}"> <span class="nav-label">Notas</span></a>
+                    </li>
+                    <li class="{{isActiveRoute regex='mensajes'}}">
+                        <a href="{{pathFor route='mensajes'}}"> <span class="nav-label">Mensajes</span></a>
                     </li>
                 </ul>
             </div>

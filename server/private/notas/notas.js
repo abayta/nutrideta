@@ -49,4 +49,16 @@ Meteor.methods({
         })
     },
 
+    //@Method que elimina una nota en la bd
+    borrarNota: function (id) {
+        check(id, String);
+
+        Notas.remove(id, function (error) {
+            if (error) {
+                // display the error to the user
+                Logger.log("Error a la hora de borrar la nota " + id);
+            }
+        })
+    },
+
 });

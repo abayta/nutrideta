@@ -118,11 +118,44 @@ Template.notas.events({
 
         document.getElementById("tituloEdit").value = tituloNota;
 
+    },
+    'submit .borrar ': function (event) {
+        var notaId = this._id;
+        event.preventDefault();
+        swal({
+            title: "¿Estás seguro?",
+            text: "Se eliminará la nota que has seleccionado",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Borrar",
+            closeOnConfirm: false
+        }, function () {
+            Meteor.call('borrarNota', notaId, function (error) {
+                if (error) {
+                    swal({
+                        title: "¡Se ha producido un error!",
+                        text: "No ha sido posible borrar la nota",
+                        type: "error",
+                        html: true
+                    });
+                } else {
+                    var help = document.getElementById('helpText');
+                    help.className = 'panel-body text-center';
+                    swal({
+                        title: "¡Correcto!",
+                        text: "La nota se ha elimnado correctamente",
+                        timer: 2000,
+                        type: "success"
+                    });
+                }
+            });
+        });
     }
 });
 
 Template.notas.helpers({
-    'nota': function () {
+    'notas': function () {
         var currentUserId = Meteor.userId();
         return Notas.find({}, {sort: {createdAt: -1}, titulo: 1});
     }

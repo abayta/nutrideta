@@ -63,6 +63,12 @@ Router.route('/notas', function () {
     this.render('notas');
 });
 
+// Mensajes route
+
+Router.route('/mensajes', function () {
+    this.render('mensajes');
+});
+
 // Global - Remove splash screen after rendered layout
 
 Router.onAfterAction(function () {

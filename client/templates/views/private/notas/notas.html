@@ -1,6 +1,6 @@
 <template name="notas">
 
-    {{> pageHeader title="Notas" desc="La sección de notas sirve para anotar algo que desees recordar" category="App views" }}
+    {{> pageHeader title="Notas" desc="La sección de notas sirve para anotar algo que desees recordar" category="Zona privada" }}
 
 
     {{#staggering}}
@@ -52,7 +52,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" id="cerrarBtn1" class="btn btn-default" data-dismiss="modal">
+                                            <button type="button" id="cerrarBtn1" class="btn btn-default"
+                                                    data-dismiss="modal">
                                                 Cerrar
                                             </button>
                                             <button type="submit" id="guardar" class="btn btn-primary">Guardar
@@ -84,7 +85,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" id="cerrarBtn2" class="btn btn-default" data-dismiss="modal">
+                                            <button type="button" id="cerrarBtn2" class="btn btn-default"
+                                                    data-dismiss="modal">
                                                 Cerrar
                                             </button>
                                             <button type="submit" class="btn btn-primary">Guardar
@@ -97,10 +99,10 @@
 
                         <div id="notes" class="collapse">
 
-                            {{#each nota}}
+                            {{#each notas}}
 
                                 <div class="panel-body note-link">
-                                    <a href="#{{_id}}" data-toggle="tab">
+                                    <a href="#{{_id}}" data-toggle="tab" onclick="closeFirst({{_id}})">
                                         <small class="pull-right text-muted">{{createdAt}}</small>
                                         <h5>{{titulo}}</h5>
                                     </a>
@@ -123,7 +125,7 @@
 
 
                             <div class="tab-content">
-                                {{#each nota}}
+                                {{#each notas}}
                                     <div id="{{_id}}" class="tab-pane">
                                         <div class="pull-right text-muted m-l-lg">
                                             <a id="fechaNota">{{createdAt}}</a>
@@ -139,11 +141,27 @@
                                                     data-target="#editModal"><i class="fa fa-thumbs-o-up"></i>
                                                 Editar
                                             </button>
-                                            <button class="btn btn-sm btn-default"><i class="fa fa-trash"></i> Borrar
-                                            </button>
+                                            <form class="borrar">
+                                                <button class="btn btn-sm btn-default" id="{{_id}}"><i
+                                                        class="fa fa-trash"></i>
+                                                    Borrar
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 {{/each}}
+                                <div class="panel-body text-center" id="helpText">
+                                    <i class="pe pe-7s-notebook big-icon text-warning"></i>
+                                    <h4 class="font-bold">
+                                        Aquí encontrarás todas tus notas
+                                    </h4>
+
+                                    <p class="text-muted">
+                                        Puede guardar la información que desee, siempre la tendrá disponible en
+                                        cualquier momento y cualquier lugar.
+                                    </p>
+                                </div>
+
                             </div>
 
                         </div>
@@ -154,4 +172,13 @@
         </div>
 
     {{/staggering}}
+
+    <script>
+        function closeFirst(e) {
+            var help = document.getElementById('helpText');
+            help.className = 'tab-pane';
+        }
+    </script>
+
+
 </template>
