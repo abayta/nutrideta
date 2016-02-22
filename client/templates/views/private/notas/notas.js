@@ -97,11 +97,12 @@ Template.notas.events({
         }
         ;
     },
-    'submit #editNotasForm': function (event) {
-        var descripcion = $(event.target).find('#descripcion').value();
-        var _id = $(event.target).find('#_id').value();
-        var titulo = $(event.target).find('#titulo').value();
-        Meteor.call('editarNota', id, titulo, descripcion);
+    'submit #editNotasForm': function (event, id) {
+        var notaId = Session.get('notaId');
+        var titulo = event.target.titulo.value;
+        var descripcion = $(event.target).find('#summernote2').code();
+
+        Meteor.call('editarNota', notaId, titulo, descripcion);
 
         swal({
             title: "¡Correcto!",
@@ -112,14 +113,19 @@ Template.notas.events({
 
     },
     'click #editar': function (event) {
-        var descripcionNota = $(event.target).find('#descripcionNota').code();
-        var tituloNota = $(event.target).find('#tituloNota').value();
-        var fechaNota = $(event.target).find('#fechaNota').value();
+        var notaId = this._id;
+        Session.set('notaId', notaId);
+        event.preventDefault();
+        var nota = Notas.findOne(notaId);
+        var descripcion = nota.descripcion;
+        var titulo = nota.titulo;
+        document.getElementById("tituloEdit").value = titulo;
+        var description = document.getElementsByClassName('note-editable');
+        description[1].innerHTML = descripcion;
 
-        document.getElementById("tituloEdit").value = tituloNota;
 
     },
-    'submit .borrar ': function (event) {
+    'submit .borrar ': function (event, id) {
         var notaId = this._id;
         event.preventDefault();
         swal({

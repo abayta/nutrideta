@@ -5,21 +5,7 @@
 // Run this when the meteor app is started
 // Añadimos usuarios por defecto
 Meteor.startup(function () {
-    console.log('Creating notes: ');
 
-    /* Tareas.insert({
-     createdBy: "pEv6Zgkus8sHwT5Bx",
-     createdAt: "1454954995746",
-     titulo: "David",
-     descripcion: "asd"
-     });
-
-     Tareas.insert({
-     createdBy: "pEv6Zgkus8sHwT5Bx",
-     createdAt: "1454954995746",
-     titulo: "Prueba",
-     descripcion: "loca"
-     });*/
 });
 
 
@@ -59,6 +45,13 @@ Meteor.methods({
                 Logger.log("Error a la hora de borrar la nota " + id);
             }
         })
+    },
+
+    //@Method que busca una nota en la bd
+    findNota: function (id) {
+        check(id, String);
+
+        return Notas.findOne(id);
     },
 
 });
