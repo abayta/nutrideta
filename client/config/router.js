@@ -69,6 +69,13 @@ Router.route('/mensajes', function () {
     this.render('mensajes');
 });
 
+//TEST ROUTE ABA RECIPES
+
+Router.route('/createRecipe', function () {
+    this.render('createRecipe');
+});
+
+
 // Global - Remove splash screen after rendered layout
 
 Router.onAfterAction(function () {

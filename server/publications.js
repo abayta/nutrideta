@@ -12,3 +12,7 @@ Meteor.publish('profile', function (id) {
 Meteor.publish('notasByUser', function(id) {
     return Notas.find({createdBy: id}, {sort: {createdAt: 1}, limit: 10});
 });
+
+Meteor.publish('recipes', function () {
+    return Recipes.find({author: this.userId});
+});
