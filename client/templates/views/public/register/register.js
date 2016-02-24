@@ -9,62 +9,11 @@ if (Meteor.isClient) {
 
     });
 
-    Template.register.events({
-        'submit #registerForm': function (event) {
-
-            event.preventDefault();
-
-            var error = false;
-
-            var email = event.target.email.value;
-            var password = event.target.password.value;
-            var nombre = event.target.nombre.value;
-            var apellidos = event.target.apellidos.value;
-            var usuario = event.target.usuario.value;
-            var repeatPassword = event.target.repeatPassword.value;
-            var direccion = event.target.direccion.value;
-            var codigoPostal = event.target.codigoPostal.value;
-
-            //Comprobamos los campos que sean obligatorios
-            var todosArray = [['Nombre', nombre], ['Apellidos', apellidos], ['Usuario', usuario], ['Email', email], ['Contraseña', password], ['Repetir contraseña', repeatPassword], ['Direccion', direccion], ['Codigo Postal', codigoPostal]];
-            var errorArray = [];
-            for (obj in todosArray) {
-                if (todosArray[obj][1] == "") {
-                    errorArray.push(todosArray[obj][0]);
-                }
-            }
-
-            if (errorArray.length > 0) {
-                var cadena = '';
-                for (elem in errorArray) {
-                    cadena += errorArray[elem] + '<br>';
-                }
-
-                //Lanzamos alert con el tipo de error
-                swal({
-                    title: "¡Error de validación!",
-                    text: "Los siguientes campos obligatorios no están rellenos:<br>" + cadena,
-                    type: "warning",
-                    html: true
-                });
-                error = true;
-                return false;
-            }
-
-            if (error == false) {
-                var user = {
-                    'email': email, password: password, profile: {
-                        nombre: nombre,
-                        apellidos: apellidos,
-                        usuario: usuario,
-                        direccion: direccion,
-                        codigoPostal: codigoPostal
-                    }
-                };
-
-
-                //Creamos el usuario con los atributos que recogemos por formulario
-                Accounts.createUser(user, function (err) {
+    AutoForm.hooks({
+        signUpForm: {
+            onSubmit: function (data) {
+                this.event.preventDefault();
+                Accounts.createUser(data, function (err) {
                     if (err) {
                         swal({
                             title: "¡Error!",
@@ -73,12 +22,11 @@ if (Meteor.isClient) {
                             html: true
                         });
                     } else {
-
                         //Llamamos al metodo de añadir los roles
                         Meteor.call('addUserRoleFreeNutritionist', Meteor.userId());
-
+                        var email = data.email;
                         //Mandamos mensaje de bienvenida
-                        Meteor.call('sendRegisterEmail', email, nombre);
+                        Meteor.call('sendRegisterEmail', email);
 
                         Router.go('/login');
                         swal({
@@ -92,4 +40,5 @@ if (Meteor.isClient) {
             }
         }
     });
+
 }

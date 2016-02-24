@@ -56,10 +56,9 @@ Meteor.startup(function () {
 
 
 Meteor.methods({
-
     //@Method envia un correo al registrarte en la pagina
-    sendRegisterEmail: function (to, name) {
-        check([to, name], [String]);
+    sendRegisterEmail: function (to) {
+        check([to], [String]);
 
         // Let other method calls from the same client start running,
         // without waiting for the email sending to complete.
@@ -69,7 +68,7 @@ Meteor.methods({
             to: to,
             from: 'info@nutrideta.com',
             subject: 'Bienvenid@ a nutrideta.com',
-            text: 'Gracias ' + name + ' por unirte al equipo de nutrideta.com'
+            text: 'Gracias por unirte al equipo de nutrideta.com'
         });
     },
 
