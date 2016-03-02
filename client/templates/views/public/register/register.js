@@ -8,7 +8,7 @@ if (Meteor.isClient) {
         });
 
     });
-
+    
     AutoForm.hooks({
         signUpForm: {
             onSubmit: function (data) {

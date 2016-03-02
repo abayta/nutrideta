@@ -32,3 +32,13 @@ Template.profileEdit.events({
 
     }
 });
+
+/*
+AutoForm.hooks({
+    editProfileForm: {
+        onSubmit: function (data) {
+            this.event.preventDefault();
+
+        }
+    }
+});*/

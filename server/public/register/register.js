@@ -6,7 +6,7 @@
 // Añadimos usuarios por defecto
 Meteor.startup(function () {
 
-    if (Meteor.users.find().fetch().length === 0) {
+   /* if (Meteor.users.find().fetch().length === 0) {
 
         console.log('Creating users: ');
 
@@ -50,7 +50,7 @@ Meteor.startup(function () {
             Roles.addUsersToRoles(id, userData.roles, 'nutricionista');
 
         });
-    }
+    }*/
 
 });
 
