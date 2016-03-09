@@ -16,3 +16,7 @@ Meteor.publish('notasByUser', function(id) {
 Meteor.publish('recipes', function () {
     return Recipes.find({author: this.userId});
 });
+
+Meteor.publish("ingredients", function(){
+    return Ingredients.find();
+});
