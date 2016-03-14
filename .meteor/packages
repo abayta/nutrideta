@@ -35,6 +35,7 @@ meteorhacks:npm
 aldeed:collection2
 cfs:standard-packages
 msavin:mongol
+msavin:jetsetter
 aldeed:simple-schema
 aldeed:autoform
 zimme:active-route

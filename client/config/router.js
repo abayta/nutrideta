@@ -75,6 +75,14 @@ Router.route('/createRecipe', function () {
     this.render('createRecipe');
 });
 
+Router.route('/createIngredient', function () {
+    this.render('createIngredient');
+});
+
+Router.route('/listIngredients', function () {
+  this.render('listIngredients');
+});
+
 
 // Global - Remove splash screen after rendered layout
 

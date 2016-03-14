@@ -92,6 +92,7 @@ momentjs:moment@2.11.2
 mongo@1.1.3
 mongo-id@1.0.1
 mongo-livedata@1.0.9
+msavin:jetsetter@1.5.2
 msavin:mongol@1.6.2
 natestrauser:animate-css@3.4.0
 npm-bcrypt@0.7.8_2
