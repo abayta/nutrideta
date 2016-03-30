@@ -8,9 +8,9 @@ Meteor.publish('profile', function (id) {
     return Users.find(id);
 });
 
-//Publicamos las notas de un usuario
-Meteor.publish('notasByUser', function(id) {
-    return Notas.find({createdBy: id}, {sort: {createdAt: 1}, limit: 10});
+//Publicamos las notes de un usuario
+Meteor.publish('notesByUser', function(id) {
+    return Notes.find({createdBy: id}, {sort: {createdAt: 1}, limit: 10});
 });
 
 Meteor.publish('recipes', function () {

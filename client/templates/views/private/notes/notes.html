@@ -1,6 +1,6 @@
-<template name="notas">
+<template name="notes">
 
-    {{> pageHeader title="Notas" desc="La sección de notas sirve para anotar algo que desees recordar" category="Zona privada" }}
+    {{> pageHeader title="Notas" desc="La sección de notes sirve para anotar algo que desees recordar" category="Zona privada" }}
 
 
     {{#staggering}}
@@ -41,7 +41,7 @@
                                             de la nota
                                         </small>
                                     </div>
-                                    <form id="createNotasForm">
+                                    <form id="createNotesForm">
                                         <div class="modal-body">
                                             <label class="control-label text-center">Título</label>
                                             <input type="text" id="titulo" name="titulo" class="form-control"
@@ -74,7 +74,7 @@
                                             de la nota
                                         </small>
                                     </div>
-                                    <form id="editNotasForm">
+                                    <form id="editNotesForm">
                                         <div class="modal-body">
                                             <label class="control-label text-center">Título</label>
                                             <input type="text" id="tituloEdit" name="titulo" class="form-control"
@@ -99,7 +99,7 @@
 
                         <div id="notes" class="collapse">
 
-                            {{#each notas}}
+                            {{#each notes}}
 
                                 <div class="panel-body note-link">
                                     <a href="#{{_id}}" data-toggle="tab" onclick="closeFirst({{_id}})">
@@ -125,7 +125,7 @@
 
 
                             <div class="tab-content">
-                                {{#each notas}}
+                                {{#each notes}}
                                     <div id="{{_id}}" class="tab-pane">
                                         <div class="pull-right text-muted m-l-lg">
                                             <a id="fechaNota">{{createdAt}}</a>
@@ -153,7 +153,7 @@
                                 <div class="panel-body text-center" id="helpText">
                                     <i class="pe pe-7s-notebook big-icon text-warning"></i>
                                     <h4 class="font-bold">
-                                        Aquí encontrarás todas tus notas
+                                        Aquí encontrarás todas tus notes
                                     </h4>
 
                                     <p class="text-muted">

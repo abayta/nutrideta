@@ -4,7 +4,7 @@
 
 
 
-Template.notas.onRendered(function () {
+Template.notes.onRendered(function () {
 
     // Initialize summernote plugin
     $('#summernote1').summernote({
@@ -32,8 +32,8 @@ Template.notas.onRendered(function () {
 
 });
 
-Template.notas.events({
-    'submit #createNotasForm': function (event) {
+Template.notes.events({
+    'submit #createNotesForm': function (event) {
 
         event.preventDefault();
 
@@ -84,7 +84,7 @@ Template.notas.events({
                 } else {
                     //Ponemos los campos del formulario vacios para insertar otro
                     $('#summernote1').code('');
-                    document.getElementById("createNotasForm").reset();
+                    document.getElementById("createNotesForm").reset();
                     document.getElementById("cerrarBtn1").click();
                     swal({
                         title: "¡Correcto!",
@@ -97,7 +97,7 @@ Template.notas.events({
         }
         ;
     },
-    'submit #editNotasForm': function (event, id) {
+    'submit #editNotesForm': function (event, id) {
         var notaId = Session.get('notaId');
         var titulo = event.target.titulo.value;
         var descripcion = $(event.target).find('#summernote2').code();
@@ -116,7 +116,7 @@ Template.notas.events({
         var notaId = this._id;
         Session.set('notaId', notaId);
         event.preventDefault();
-        var nota = Notas.findOne(notaId);
+        var nota = Notes.findOne(notaId);
         var descripcion = nota.descripcion;
         var titulo = nota.titulo;
         document.getElementById("tituloEdit").value = titulo;
@@ -160,14 +160,14 @@ Template.notas.events({
     }
 });
 
-Template.notas.helpers({
-    'notas': function () {
+Template.notes.helpers({
+    'notes': function () {
         var currentUserId = Meteor.userId();
-        return Notas.find({}, {sort: {createdAt: -1}, titulo: 1});
+        return Notes.find({}, {sort: {createdAt: -1}, titulo: 1});
     }
 });
 
-//Este metodo sirve para cortar o truncar cadenas
+//Metodo para cortar o truncar cadenas
 Handlebars.registerHelper('trimString', function (passedString, startstring, endstring) {
     var theString = passedString.substring(startstring, endstring);
     return new Handlebars.SafeString(theString)

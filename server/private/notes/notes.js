@@ -15,7 +15,7 @@ Meteor.methods({
     crearNota: function (titulo, descripcion) {
         check(titulo, String);
 
-        Notas.insert({
+        Notes.insert({
             createdBy: Meteor.userId(),
             createdAt: moment(new Date()).format('DD-MM-YYYY'),
             titulo: titulo,
@@ -27,7 +27,7 @@ Meteor.methods({
     editarNota: function (id, titulo, descripcion) {
         check(titulo, String);
 
-        Notas.update(id, {$set: {titulo: titulo, descripcion: descripcion}}, function (error) {
+        Notes.update(id, {$set: {titulo: titulo, descripcion: descripcion}}, function (error) {
             if (error) {
                 // display the error to the user
                 Logger.log("Error a la hora de editar la nota " + id);
@@ -39,7 +39,7 @@ Meteor.methods({
     borrarNota: function (id) {
         check(id, String);
 
-        Notas.remove(id, function (error) {
+        Notes.remove(id, function (error) {
             if (error) {
                 // display the error to the user
                 Logger.log("Error a la hora de borrar la nota " + id);
@@ -51,7 +51,7 @@ Meteor.methods({
     findNota: function (id) {
         check(id, String);
 
-        return Notas.findOne(id);
+        return Notes.findOne(id);
     },
 
 });

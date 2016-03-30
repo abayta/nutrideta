@@ -1,5 +1,6 @@
 Router.configure({
     layoutTemplate: 'layout',
+    loadingTemplate: 'loading',
     notFoundTemplate: 'notFound'
 });
 
@@ -41,32 +42,35 @@ Router.route('/dashboard', function () {
 
 // Profile route
 
-Router.route('/profile', function () {
-    this.render('profile');
+Router.route('/profile', {
+    name: 'profile',
+    waitOn: function() {
+        return Meteor.subscribe('user', this.params._id);
+    },
+    data: function() { return Meteor.users.findOne(this.params._id); }
 });
 
 // Profile edit route
 
-Router.route('/profileEdit', function () {
+Router.route('/profileEdit', {
     name: 'profileEdit',
-        this.render('profileEdit', {
-            data: function () {
-                return Meteor.users.findOne({_id: Meteor.userId()});
-            }
-        });
+    waitOn: function() {
+        return Meteor.subscribe('user', this.params._id);
+    },
+    data: function() { return Meteor.users.findOne(this.params._id); }
 });
 
-// Profile route
+// Notes route
 
-Router.route('/notas', function () {
-    Meteor.subscribe('notasByUser', Meteor.userId());
-    this.render('notas');
+Router.route('/notes', function () {
+    Meteor.subscribe('notesByUser', Meteor.userId());
+    this.render('notes');
 });
 
-// Mensajes route
+// Messages route
 
-Router.route('/mensajes', function () {
-    this.render('mensajes');
+Router.route('/messages', function () {
+    this.render('messages');
 });
 
 //TEST ROUTE ABA RECIPES
@@ -91,3 +95,15 @@ Router.onAfterAction(function () {
         $('.splash').css('display', 'none')
     })
 });
+
+var requireLogin = function() {
+    if (! Meteor.user()) {
+        if (Meteor.loggingIn()) {
+            this.render(this.loadingTemplate);
+        } else {
+            this.render('accessDenied');
+        }
+    } else {
+        this.next();
+    }
+}

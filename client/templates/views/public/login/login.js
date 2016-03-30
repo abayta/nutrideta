@@ -17,7 +17,7 @@ Template.login.events({
                 swal({
                     title: "¡Login correcto!",
                     text: "Bienvenido a la página principal",
-                    timer: 2000,
+                    timer: 1000,
                     type: "success"
                 });
             }

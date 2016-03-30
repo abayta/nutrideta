@@ -11,17 +11,15 @@
                     {{#panel}}
                         <div class="text-center m-b-md" id="wizardControl">
 
-                            <a class="btn btn-primary" href="#step1" data-toggle="tab">Paso 1 - Datos personales</a>
-                            <a class="btn btn-default" href="#step2" data-toggle="tab">Paso 2 - Datos
-                                nutricionista</a>
-                            <a class="btn btn-default" href="#step3" data-toggle="tab">Paso 3 - Aceptar
-                                condiciones</a>
+                            <a class="btn btn-primary" id="btnStep1" href="#step1" onclick="changeBtn(this);" data-toggle="tab">Paso 1 - Datos personales</a>
+                            <a class="btn btn-default" id="btnStep2" href="#step2" onclick="changeBtn(this);" data-toggle="tab">Paso 2 - Datos
+                                del nutricionista</a>
+                            <a class="btn btn-default" id="btnStep3" href="#step3" onclick="changeBtn(this);" data-toggle="tab">Paso 3 - Redes sociales</a>
 
                         </div>
-
+                        {{#autoForm collection='Meteor.users' schema="Schema.UserProfile" doc=this type='update' id='profileEdit'}}
                         <div class="tab-content">
                             <div id="step1" class="p-m tab-pane active">
-                                {{#autoForm collection='Meteor.users' schema="Schema.UserProfile" doc=this type='update' id='profileEdit'}}
                                     <div class="row">
                                         <div class="col-lg-3 text-center">
                                             <i class="pe-7s-user fa-5x text-muted"></i>
@@ -48,15 +46,11 @@
                                                     {{> afFieldInput name='lastName' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
-                                                    <label>Dirección</label>
-                                                    {{> afFieldInput name='adress' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
                                                     <label>Teléfono</label>
                                                     {{> afFieldInput name='phone' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
-                                                    <label>Cumpleaños</label>
+                                                    <label>Fecha nacimiento</label>
                                                     {{> afFieldInput name='birthday' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
@@ -64,42 +58,16 @@
                                                     {{> afFieldInput name='country' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
-                                                    <label>Compañía</label>
-                                                    {{> afFieldInput name='company' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label>Facebook</label>
-                                                    {{> afFieldInput name='facebook' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label>Twitter</label>
-                                                    {{> afFieldInput name='twitter' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label>Instagram</label>
-                                                    {{> afFieldInput name='instagram' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label>Youtube</label>
-                                                    {{> afFieldInput name='youtube' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
                                                     <label>Correo personal</label>
                                                     {{> afFieldInput name='personalEmail' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label>Descripción personal</label>
-                                                    {{> afFieldInput name='description' class="form-control"}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type='submit' class="btn btn-success submitWizard">Guardar</button>
-                                {{/autoForm}}
+
 
                                 <div class="text-right m-t-xs">
-                                    <a class="btn btn-default prev" href="#">Previous</a>
-                                    <a class="btn btn-default next" href="#">Next</a>
+                                    <a id="btn1" class="btn btn-default next" onclick="$('#btnStep2').click();">Siguiente</a>
                                 </div>
 
                             </div>
@@ -108,7 +76,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 text-center">
-                                        <i class="pe-7s-credit fa-5x text-muted"></i>
+                                        <i class="pe-7s-study fa-5x text-muted"></i>
 
                                         <p class="small m-t-md">
                                             <strong>It is a long</strong> established fact that a reader will be
@@ -118,72 +86,68 @@
                                     </div>
                                     <div class="col-lg-9">
                                         <div class="row">
-                                            <div class="form-group col-lg-12">
-                                                <label>Name on Card</label>
-                                                <input type="text" value="" id="" class="form-control"
-                                                       name="card_name">
+                                            <div class="form-group col-lg-6">
+                                                <label>Compañía</label>
+                                                {{> afFieldInput name='company' class="form-control"}}
                                             </div>
                                             <div class="form-group col-lg-6">
-                                                <label>Card Number</label>
-                                                <input type="text" value="" id="" class="form-control"
-                                                       name="card_number">
-                                            </div>
-                                            <div class="form-group col-lg-6">
-                                                <label>Billing Address</label>
-                                                <input type="text" value="" id="" class="form-control"
-                                                       name="billing_address">
+                                                <label>Dirección</label>
+                                                {{> afFieldInput name='adress' class="form-control"}}
                                             </div>
                                             <div class="form-group col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-xs-4 form-group">
-                                                        <label>CVC</label>
-                                                        <input class="form-control" placeholder="ex. 381"
-                                                               type="text"
-                                                               name="cvc">
-                                                    </div>
-                                                    <div class="col-xs-4 form-group">
-                                                        <label>Expiration</label>
-                                                        <input class="form-control" placeholder="MM" type="text"
-                                                               name="expire_month">
-                                                    </div>
-                                                    <div class="col-xs-4 form-group">
-                                                        <label></label>
-                                                        <input class="form-control" placeholder="YYYY" type="text"
-                                                               name="expire_year">
-                                                    </div>
-                                                </div>
+                                                <label>Descripción personal</label>
+                                                {{> afFieldInput name='description' rows=6 class="form-control"}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-right m-t-xs">
-                                    <a class="btn btn-default prev" href="#">Previous</a>
-                                    <a class="btn btn-default next" href="#">Next</a>
+                                    <a class="btn btn-default prev" onclick="$('#btnStep1').click();">Anterior</a>
+                                    <a class="btn btn-default next" onclick="$('#btnStep3').click();">Siguiente</a>
                                 </div>
 
                             </div>
-                            <div id="step3" class="tab-pane">
-                                <div class="row text-center m-t-lg m-b-lg">
-                                    <div class="col-lg-12">
-                                        <i class="pe-7s-check fa-5x text-muted"></i>
+
+                            <div id="step3" class="p-m tab-pane">
+
+                                <div class="row">
+                                    <div class="col-lg-3 text-center">
+                                        <i class="pe-7s-chat fa-5x text-muted"></i>
 
                                         <p class="small m-t-md">
-                                            <strong>There are many</strong> variations of passages of Lorem Ipsum
-                                            available, but the majority have suffered
+                                            <strong>It is a long</strong> established fact that a reader will be
+                                            distracted by the readable
+                                            <br/><br/>Many desktop publishing packages and web page editors now use
                                         </p>
                                     </div>
-                                    <div class="checkbox col-lg-12">
-                                        <input type="checkbox" class="i-checks approveCheck" name="approve">
-                                        Approve this form
+                                    <div class="col-lg-9">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label>Facebook</label>
+                                                {{> afFieldInput name='facebook' class="form-control"}}
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Twitter</label>
+                                                {{> afFieldInput name='twitter' class="form-control"}}
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Instagram</label>
+                                                {{> afFieldInput name='instagram' class="form-control"}}
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Youtube</label>
+                                                {{> afFieldInput name='youtube' class="form-control"}}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="text-right m-t-xs">
-                                    <a class="btn btn-default prev" href="#">Anterior</a>
-                                    <a class="btn btn-default next" href="#">Siguiente</a>
-                                    <button type='submit' class="btn btn-success submitWizard">Guardar</button>
+                                    <a class="btn btn-default prev" onclick="$('#btnStep2').click();">Anterior</a>
+                                    <button type='submit' class="btn btn-default next">Guardar</button>
                                 </div>
                             </div>
                         </div>
+                        {{/autoForm}}
                         <div class="m-t-md">
 
                             <p>
@@ -200,5 +164,15 @@
             </div>
         </div>
     {{/staggering}}
+
+    <script>
+        function changeBtn(event){
+            /*debugger;
+            var btn = $(event.target);
+            if ($(event.target).hasClass('btn-default')){
+                $(event.id).removeClass('btn-default');
+            }*/
+        }
+    </script>
 
 </template>

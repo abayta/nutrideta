@@ -1,0 +1,107 @@
+<template name="messages">
+
+    {{> pageHeader title="Mensajería" desc="Mailbox - Email list." category="Zona privada" }}
+
+    {{#staggering}}
+
+        <div class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <ul class="mailbox-list">
+                                <li>
+                                    <a data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i>
+                                        Redactar</a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="mailbox-list">
+                                <li class="option" id="inbox">
+                                    <a href="#" class="opt"><i class="fa fa-envelope"></i> Recibidos</a>
+                                </li>
+                                <li class="option" id="outbox">
+                                    <a href="#" class="opt"><i class="fa fa-paper-plane"></i> Enviados</a>
+                                </li>
+                                <li class="option" id="trash">
+                                    <a href="#" class="opt"><i class="fa fa-trash"></i> Trash</a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="mailbox-list">
+                                <li>
+                                    <a href="#"><i class="fa fa-star text-warning"></i> Destacado</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-bell text-danger"></i> Importante</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-trash text-info"></i> Borrador</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-lock text-success"></i> Privado</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="hpanel">
+                        <div class="panel-heading hbuilt">
+                            <div class="text-center p-xs font-normal">
+                                <div class="input-group"><input type="text" class="form-control input-sm"
+                                                                placeholder="Buscar email.."> <span
+                                        class="input-group-btn"> <button type="button" class="btn btn-sm btn-default">
+                                    Buscar
+                                </button> </span></div>
+                            </div>
+                        </div>
+                        <br>
+
+                            {{> optionMessages}}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="color-line"></div>
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title">Redactar mensaje privado</h4>
+                            <small class="font-bold">Puede elegir a más de un destinatario
+                            </small>
+                        </div>
+                        <form id="createNotesForm">
+                            <div class="modal-body">
+                                {{> quickForm
+                                collection="Messages"
+
+                                id="createMessages"
+                                type="method"
+                                meteormethod="Messages.methods.insert"
+                                resetOnSuccess=true}}
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="cerrarBtn1" class="btn btn-default"
+                                        data-dismiss="modal">
+                                    Cerrar
+                                </button>
+                                <button type="submit" id="guardar" class="btn btn-primary">Guardar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    {{/staggering}}
+
+</template>
+

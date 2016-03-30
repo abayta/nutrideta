@@ -33,12 +33,32 @@ Template.profileEdit.events({
     }
 });
 
-/*
-AutoForm.hooks({
-    editProfileForm: {
-        onSubmit: function (data) {
-            this.event.preventDefault();
-
-        }
+AutoForm.addHooks(['profileEdit'],{
+    onSubmit: function(insertDoc, updateDoc, currentDoc) {
+        // You must call this.done()!
+        //this.done(); // submitted successfully, call onSuccess
+        //this.done(new Error('foo')); // failed to submit, call onError with the provided error
+        //this.done(null, "foo"); // submitted successfully, call onSuccess with `result` arg set to "foo"
+    },
+    // Called when any submit operation fails
+    onError: function(updateDoc, error) {
+        swal({
+            title: "¡Se ha producido un error!",
+            text: "No ha sido posible editar el perfil",
+            type: "error",
+            html: true
+        });
+    },
+    // Called when any submit operation succeeds
+    onSuccess: function(updateDoc, result) {
+        Router.go('/profile', {
+            data: function() { return Meteor.users.findOne(Meteor.userId()); }
+        });
+        swal({
+            title: "¡Correcto!",
+            text: "Perfil modificado correctamente",
+            timer: 2000,
+            type: "success"
+        });
     }
-});*/
+});
