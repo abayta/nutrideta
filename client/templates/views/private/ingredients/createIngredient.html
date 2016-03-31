@@ -1,0 +1,13 @@
+<template name="createIngredient">
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="hpanel">
+            <div class="panel-body">
+              {{> quickForm collection="Ingredients" id="insertIngredientsForm" type="method" meteormethod="Ingredients.methods.insert"}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</template>

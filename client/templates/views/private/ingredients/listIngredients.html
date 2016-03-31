@@ -1,13 +1,16 @@
 <template name="listIngredients">
-  <div class="container">
+  <div class="content">
     {{#each ingredients}}
-
-        <div class="panel-body note-link col-md-3">
+      <div class="col-md-3">
+        <div class="hpanel panel-group">
+          <div class="panel-body">
             <a href="#{{_id}}" data-toggle="tab" onclick="closeFirst({{_id}})">
                 <small class="text-muted">{{name}}</small>
                 <h5>{{calories}}</h5>
             </a>
+          </div>
         </div>
+      </div>
     {{/each}}
   </div>
 </template>

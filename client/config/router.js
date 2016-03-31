@@ -1,3 +1,72 @@
+'use strict'
+
+/////////////////////////////////////////////////////////////////////////////
+// Routing
+////////////////////////////////////////////////////////////////////////////
+Meteor.navigateTo = function (path) {
+  Router.go(path)
+}
+
+function emailVerified (user) {
+  return _.some(user.emails, function (email) {
+    return email.verified
+  })
+}
+
+var filters = {
+
+  /**
+   * ensure user is logged in and
+   * email verified
+   */
+  authenticate: function () {
+    var user
+
+    if (Meteor.loggingIn()) {
+
+      console.log('[authenticate filter] loading')
+      this.layout('layout')
+      this.render('loading')
+
+    } else {
+
+      user = Meteor.user()
+
+      if (!user) {
+        console.log('[authenticate filter] signin')
+        Meteor.navigateTo('/login')
+
+        /*Otra opcion es cargar la plantilla*/
+
+        // this.layout('blank-layout')
+        // this.render('login')
+        return
+      }
+
+      if (!emailVerified(user)) {
+        console.log('[authenticate filter] awaiting-verification')
+        this.layout('layout')
+        this.render('awaiting-verification')
+        return
+      }
+
+      console.log('[authenticate filter] done')
+      this.layout('layout')
+
+      this.next()
+    }
+  },  // end authenticate
+  nutricionista: function () {
+    console.log('[nutricionista]')
+    if (Roles.userIsInRole(Meteor.userId(), 'nutricionista')) {
+      this.next()
+    } else {
+      Meteor.navigateTo('/')
+    }
+  }
+
+}  // end filters
+
 Router.configure({
     layoutTemplate: 'layout',
     loadingTemplate: 'loading',
@@ -79,8 +148,9 @@ Router.route('/createRecipe', function () {
     this.render('createRecipe');
 });
 
-Router.route('/createIngredient', function () {
-    this.render('createIngredient');
+Router.route('/createIngredient', {
+  template: 'createIngredient',
+  before: [filters.authenticate]
 });
 
 Router.route('/listIngredients', function () {
