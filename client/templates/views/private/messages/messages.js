@@ -2,22 +2,28 @@
  * Created by danjimgar on 14/03/2016.
  */
 
-var messageGroupSelected = 'inbox';
-
 Template.messages.events({
     'click .option': function(event){
-        console.log("You clicked a .option element");
         var optionId = event.currentTarget.id;
         Session.set("activeMessages",optionId);
+        //i is the position, obj is the DOM object
+        $('.option').each(function(i, obj) {
+            $("#"+obj.id).removeClass('active');
+        });
         $("#"+optionId).addClass('active')
     }
 });
 
+//Equals function to compare two strings for change a template
+Template.registerHelper('equals', function (a, b) {
+    return a === b;
+});
+
 Template.messages.helpers({
     active: function () {
-        return Session.get("activeMessages");
-    }
-});
+        var active = Session.get("activeMessages");
+        return Template[active];
+}});
 
 AutoForm.addHooks(['createMessages'], {
     // Called when any submit operation fails

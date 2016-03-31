@@ -18,29 +18,26 @@
                             </ul>
                             <hr>
                             <ul class="mailbox-list">
-                                <li class="option" id="inbox">
-                                    <a href="#" class="opt"><i class="fa fa-envelope"></i> Recibidos</a>
+                                <li class="option active" id="inbox">
+                                    <a href="#"><i class="fa fa-envelope"></i> Recibidos</a>
                                 </li>
                                 <li class="option" id="outbox">
-                                    <a href="#" class="opt"><i class="fa fa-paper-plane"></i> Enviados</a>
+                                    <a href="#"><i class="fa fa-paper-plane"></i> Enviados</a>
                                 </li>
                                 <li class="option" id="trash">
-                                    <a href="#" class="opt"><i class="fa fa-trash"></i> Trash</a>
+                                    <a href="#"><i class="fa fa-trash"></i> Trash</a>
                                 </li>
                             </ul>
                             <hr>
                             <ul class="mailbox-list">
-                                <li>
+                                <li class="option" id="highlight">
                                     <a href="#"><i class="fa fa-star text-warning"></i> Destacado</a>
                                 </li>
-                                <li>
+                                <li class="option" id="important">
                                     <a href="#"><i class="fa fa-bell text-danger"></i> Importante</a>
                                 </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-trash text-info"></i> Borrador</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-lock text-success"></i> Privado</a>
+                                <li class="option" id="private">
+                                    <a href="#"><i class="fa fa-lock text-info" style="margin-left: 3px;"></i> Privado</a>
                                 </li>
                             </ul>
                         </div>
@@ -59,9 +56,7 @@
                             </div>
                         </div>
                         <br>
-
-                            {{> optionMessages}}
-
+                        {{> active}}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,335 @@
+<template name="inbox">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 mailbox-pagination m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-mailbox">
+                <tbody>
+                <tr class="unread">
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Inbox message</a></td>
+                    <td><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Tue, Nov 25</td>
+                </tr>
+                <tr>
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Marshall Horne</a></td>
+                    <td><a href="#">Praesent nec nisl sed neque ornare maximus at ac enim.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Wed, Jan 13</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <i class="fa fa-eye"> </i> 86 mensajes en total
+    </div>
+</template>
+
+<template name="outbox">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 mailbox-pagination m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-mailbox">
+                <tbody>
+                <tr class="unread">
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Outbox message</a></td>
+                    <td><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Tue, Nov 25</td>
+                </tr>
+                <tr>
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Marshall Horne</a></td>
+                    <td><a href="#">Praesent nec nisl sed neque ornare maximus at ac enim.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Wed, Jan 13</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <i class="fa fa-eye"> </i> 86 mensajes en total
+    </div>
+</template>
+
+<template name="trash">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 mailbox-pagination m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-mailbox">
+                <tbody>
+                <tr class="unread">
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Trash message</a></td>
+                    <td><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Tue, Nov 25</td>
+                </tr>
+                <tr>
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Marshall Horne</a></td>
+                    <td><a href="#">Praesent nec nisl sed neque ornare maximus at ac enim.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Wed, Jan 13</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <i class="fa fa-eye"> </i> 86 mensajes en total
+    </div>
+</template>
+
+<template name="highlight">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 mailbox-pagination m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-mailbox">
+                <tbody>
+                <tr class="unread">
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">highlight message</a></td>
+                    <td><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Tue, Nov 25</td>
+                </tr>
+                <tr>
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Marshall Horne</a></td>
+                    <td><a href="#">Praesent nec nisl sed neque ornare maximus at ac enim.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Wed, Jan 13</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <i class="fa fa-eye"> </i> 86 mensajes en total
+    </div>
+</template>
+
+<template name="important">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 mailbox-pagination m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-mailbox">
+                <tbody>
+                <tr class="unread">
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">important message</a></td>
+                    <td><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Tue, Nov 25</td>
+                </tr>
+                <tr>
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Marshall Horne</a></td>
+                    <td><a href="#">Praesent nec nisl sed neque ornare maximus at ac enim.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Wed, Jan 13</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <i class="fa fa-eye"> </i> 86 mensajes en total
+    </div>
+</template>
+
+<template name="private">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 mailbox-pagination m-b-md">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-mailbox">
+                <tbody>
+                <tr class="unread">
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">private message</a></td>
+                    <td><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Tue, Nov 25</td>
+                </tr>
+                <tr>
+                    <td class="">
+                        <div class="checkbox">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td><a href="#">Marshall Horne</a></td>
+                    <td><a href="#">Praesent nec nisl sed neque ornare maximus at ac enim.</a>
+                    </td>
+                    <td></td>
+                    <td class="text-right mail-date">Wed, Jan 13</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <i class="fa fa-eye"> </i> 86 mensajes en total
+    </div>
+</template>
