@@ -1,0 +1,364 @@
+<template name="allClients">
+    <div class="col-lg-3">
+        <div class="hpanel hgreen contact-panel">
+            <div class="panel-body">
+                <span class="label label-success pull-right">NEW</span>
+                {{> avatar user=this shape="circle" initials="US" class="img-circle m-b"}}
+                <h3><a href=""> Bradly Danforth </a></h3>
+                <div class="text-muted font-bold m-b-xs">California, LA</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae
+                    ultrices accumsan.
+                </p>
+            </div>
+            <div class="panel-footer contact-footer">
+                <div class="row">
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Projects: </span> <strong>200</strong></div>
+                    </div>
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Messages: </span> <strong>300</strong></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-stat"><span>Views: </span> <strong>400</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="hpanel hyellow contact-panel">
+            <div class="panel-body">
+                {{> avatar user=this shape="circle" initials="US" class="img-circle m-b"}}
+                <h3><a href=""> Tangela Sternberg </a></h3>
+                <div class="text-muted font-bold m-b-xs">California, LA</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae
+                    ultrices accumsan.
+                </p>
+            </div>
+            <div class="panel-footer contact-footer">
+                <div class="row">
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Projects: </span> <strong>200</strong></div>
+                    </div>
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Messages: </span> <strong>300</strong></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-stat"><span>Views: </span> <strong>400</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="hpanel hviolet contact-panel">
+            <div class="panel-body">
+                {{> avatar user=this shape="circle" initials="US" class="img-circle m-b"}}
+                <h3><a href=""> Claud Vogan </a></h3>
+                <div class="text-muted font-bold m-b-xs">California, LA</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae
+                    ultrices accumsan.
+                </p>
+            </div>
+            <div class="panel-footer contact-footer">
+                <div class="row">
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Projects: </span> <strong>200</strong></div>
+                    </div>
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Messages: </span> <strong>300</strong></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-stat"><span>Views: </span> <strong>400</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="hpanel hblue contact-panel">
+            <div class="panel-body">
+                {{> avatar user=this shape="circle" initials="US" class="img-circle m-b"}}
+                <h3><a href=""> Valda Purdy </a></h3>
+                <div class="text-muted font-bold m-b-xs">California, LA</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae
+                    ultrices accumsan.
+                </p>
+            </div>
+            <div class="panel-footer contact-footer">
+                <div class="row">
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Projects: </span> <strong>200</strong></div>
+                    </div>
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Messages: </span> <strong>300</strong></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-stat"><span>Views: </span> <strong>400</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="newClient">
+    <div class="col-lg-12">
+        {{#panel title="Añadir cliente nuevo"}}
+
+            <form name="simpleForm" novalidate id="simpleForm" action="#" method="post">
+
+                <div class="text-center m-b-md" id="wizardControl">
+
+                    <a class="btn btn-primary" href="#step1" data-toggle="tab">Step 1 - Personal data</a>
+                    <a class="btn btn-default" href="#step2" data-toggle="tab">Step 2 - Payment data</a>
+                    <a class="btn btn-default" href="#step3" data-toggle="tab">Step 3 - Approval</a>
+
+                </div>
+
+                <div class="tab-content">
+                    <div id="step1" class="p-m tab-pane active">
+
+                        <div class="row">
+                            <div class="col-lg-3 text-center">
+                                <i class="pe-7s-user fa-5x text-muted"></i>
+
+                                <p class="small m-t-md">
+                                    <strong>Lorem Ipsum</strong> is simply dummy text of the printing and
+                                    typesetting industry. Lorem Ipsum has been the industry's standard.
+                                    <br/><br/>Lorem Ipsum has been the industry's dummy text of the printing and
+                                    typesetting
+                                </p>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label>Username</label>
+                                        <input type="text" value="" id="" class="form-control" name="username"
+                                               placeholder="username">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Password</label>
+                                        <input type="password" value="" id="" class="form-control"
+                                               placeholder="******" name="password">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Company</label>
+                                        <input type="text" value="" id="" class="form-control"
+                                               placeholder="Company Name" name="company">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Email Address</label>
+                                        <input type="email" value="" id="" class="form-control"
+                                               placeholder="user@email.com" name="email">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Country</label>
+                                        <input type="text" value="" id="" class="form-control" name="country"
+                                               placeholder="UK">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right m-t-xs">
+                            <a class="btn btn-default prev" href="#">Previous</a>
+                            <a class="btn btn-default next" href="#">Next</a>
+                        </div>
+
+                    </div>
+
+                    <div id="step2" class="p-m tab-pane">
+
+                        <div class="row">
+                            <div class="col-lg-3 text-center">
+                                <i class="pe-7s-credit fa-5x text-muted"></i>
+
+                                <p class="small m-t-md">
+                                    <strong>It is a long</strong> established fact that a reader will be
+                                    distracted by the readable
+                                    <br/><br/>Many desktop publishing packages and web page editors now use
+                                </p>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label>Name on Card</label>
+                                        <input type="text" value="" id="" class="form-control" name="card_name">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Card Number</label>
+                                        <input type="text" value="" id="" class="form-control"
+                                               name="card_number">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Billing Address</label>
+                                        <input type="text" value="" id="" class="form-control"
+                                               name="billing_address">
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <div class="row">
+                                            <div class="col-xs-4 form-group">
+                                                <label>CVC</label>
+                                                <input class="form-control" placeholder="ex. 381" type="text"
+                                                       name="cvc">
+                                            </div>
+                                            <div class="col-xs-4 form-group">
+                                                <label>Expiration</label>
+                                                <input class="form-control" placeholder="MM" type="text"
+                                                       name="expire_month">
+                                            </div>
+                                            <div class="col-xs-4 form-group">
+                                                <label></label>
+                                                <input class="form-control" placeholder="YYYY" type="text"
+                                                       name="expire_year">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right m-t-xs">
+                            <a class="btn btn-default prev" href="#">Previous</a>
+                            <a class="btn btn-default next" href="#">Next</a>
+                        </div>
+
+                    </div>
+                    <div id="step3" class="tab-pane">
+                        <div class="row text-center m-t-lg m-b-lg">
+                            <div class="col-lg-12">
+                                <i class="pe-7s-check fa-5x text-muted"></i>
+
+                                <p class="small m-t-md">
+                                    <strong>There are many</strong> variations of passages of Lorem Ipsum
+                                    available, but the majority have suffered
+                                </p>
+                            </div>
+                            <div class="checkbox col-lg-12">
+                                <input type="checkbox" class="i-checks approveCheck" name="approve">
+                                Approve this form
+                            </div>
+                        </div>
+                        <div class="text-right m-t-xs">
+                            <a class="btn btn-default prev" href="#">Previous</a>
+                            <a class="btn btn-default next" href="#">Next</a>
+                            <a class="btn btn-success submitWizard" href="#">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="m-t-md">
+
+                <p>
+                    This is an example of a wizard form which can be easy adjusted. Since each step is a tab,
+                    and each clik to next tab is a function you can easily add validation or any other
+                    functionality.
+                </p>
+
+            </div>
+        {{/panel}}
+
+    </div>
+</template>
+
+<template name="upgradeSubscription">
+    <div class="col-lg-12">
+
+        <div class="text-center m-b-xl">
+            <h3>Planes disponibles en Nutrideta.com</h3>
+
+            <p>
+                Estos son nuestros planes disponibles actualmente
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="hpanel plan-box">
+                    <div class="panel-heading hbuilt text-center">
+                        <h4 class="font-bold">Basic plan</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <i class="pe pe-7s-cup big-icon text-warning"></i>
+                        <h4 class="font-bold">
+                            $10/month
+                        </h4>
+
+                        <p class="text-muted">
+                            There are many variations of passages of Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by injected humour, or randomised words which don't look
+                            even slightly believable.
+                        </p>
+                        <a href="#" class="btn btn-warning btn-sm">Select basic plan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="hpanel plan-box active">
+                    <div class="panel-heading hbuilt text-center">
+                        <h4 class="font-bold">Standard plan</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <i class="pe pe-7s-science big-icon text-success"></i>
+                        <h4 class="font-bold">
+                            $20/month
+                        </h4>
+
+                        <p class="text-muted">
+                            There are many variations of passages of Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by injected humour, or randomised words which don't look
+                            even slightly believable.
+                        </p>
+                        <a href="#" class="btn btn-success btn-sm">Select standard plan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="hpanel plan-box">
+                    <div class="panel-heading hbuilt text-center">
+                        <h4 class="font-bold">Premium plan</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <i class="pe pe-7s-refresh-cloud big-icon text-info"></i>
+                        <h4 class="font-bold">
+                            $30/month
+                        </h4>
+
+                        <p class="text-muted">
+                            There are many variations of passages of Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by injected humour, or randomised words which don't look
+                            even slightly believable.
+                        </p>
+                        <a href="#" class="btn btn-info btn-sm">Select premium plan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="hpanel plan-box">
+                    <div class="panel-heading hbuilt text-center">
+                        <h4 class="font-bold">Prestige plan</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <i class="pe pe-7s-server big-icon text-danger"></i>
+                        <h4 class="font-bold">
+                            $40/month
+                        </h4>
+
+                        <p class="text-muted">
+                            There are many variations of passages of Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by injected humour, or randomised words which don't look
+                            even slightly believable.
+                        </p>
+                        <a href="#" class="btn btn-danger btn-sm">Select prestige plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>

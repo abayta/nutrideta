@@ -139,8 +139,17 @@ Router.route('/notes', function () {
 // Messages route
 
 Router.route('/messages', function () {
+    Session.set("activeMessages","inbox");
+    Meteor.subscribe('inbox');
     this.render('messages');
 });
+
+// Clients route
+
+Router.route('/clients', function(){
+    Session.set("activeClients","allClients");
+    this.render('clients');
+})
 
 //TEST ROUTE ABA RECIPES
 
