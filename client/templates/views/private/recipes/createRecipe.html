@@ -1,3 +1,45 @@
 <template name="createRecipe">
-    {{> quickForm collection="Recipes" id="insertRecipeForm" type="method" meteormethod="Recipes.methods.insert"}}
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        {{> quickForm collection="Recipes" id="insertRecipeForm" type="method" meteormethod="Recipes.methods.insert"}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        {{> searchIngredients}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="searchIngredients">
+    {{> searchBox}}
+    {{> searchResult}}
+</template>
+
+<template name="searchBox">
+    <input type="text" id="search-box" placeholder="Search ingredients here">
+</template>
+
+<template name="searchResult">
+    <div id="search-result">
+        <div id="search-meta">
+            {{#if isLoading}}
+                searching...
+            {{/if}}
+        </div>
+
+        {{#each getIngredients}}
+            <div id="{{_id}}" draggable="true" ondragstart="drag(event)" >
+                <h4>{{name}}</h4>
+            </div>
+        {{/each}}
+    </div>
 </template>
