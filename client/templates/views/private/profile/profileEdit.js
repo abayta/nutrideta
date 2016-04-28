@@ -3,62 +3,48 @@
  */
 
 Template.profileEdit.events({
-    'submit #profileEditForm': function (event) {
-
-        event.preventDefault();
-
-        var error = false;
-        var currentUserId = this._id;
-
-        var perfil = {
-            nombre: $(event.target).find('[name=nombre]').val(),
-        }
-
-        Meteor.users.update(currentUserId, {$set: {profile: perfil}}, function (error) {
-            if (error) {
-                // display the error to the user
-                throwError(error.reason);
-            } else {
-                Router.go('profile', {_id: Meteor.userId()});
-                swal({
-                    title: "¡Correcto!",
-                    text: "Usuario modificado correctamente",
-                    timer: 2000,
-                    type: "success"
-                });
-
-            }
+    'click .option': function(event){
+        var optionId = event.currentTarget.id;
+        Session.set("activeTab",optionId);
+        //i is the position, obj is the DOM object
+        $('.option').each(function(i, obj) {
+            $("#"+obj.id).removeClass('btn-primary');
+            $("#"+obj.id).addClass('btn-default');
         });
-
+        $("#"+optionId).removeClass('btn-default');
+        $("#"+optionId).addClass('btn-primary')
     }
 });
 
-AutoForm.addHooks(['profileEdit'],{
-    onSubmit: function(insertDoc, updateDoc, currentDoc) {
-        // You must call this.done()!
-        //this.done(); // submitted successfully, call onSuccess
-        //this.done(new Error('foo')); // failed to submit, call onError with the provided error
-        //this.done(null, "foo"); // submitted successfully, call onSuccess with `result` arg set to "foo"
-    },
+//Equals function to compare two strings for change a template
+Template.registerHelper('equals', function (a, b) {
+    return a === b;
+});
+
+Template.profileEdit.helpers({
+    active: function () {
+        var active = Session.get("activeTab");
+        return Template[active];
+    }});
+
+AutoForm.addHooks(['profileEdit'], {
     // Called when any submit operation fails
-    onError: function(updateDoc, error) {
+    onError: function(formType, error) {
         swal({
             title: "¡Se ha producido un error!",
-            text: "No ha sido posible editar el perfil",
+            text: "No ha sido posible guardar el perfil",
             type: "error",
             html: true
         });
     },
     // Called when any submit operation succeeds
-    onSuccess: function(updateDoc, result) {
-        Router.go('/profile', {
-            data: function() { return Meteor.users.findOne(Meteor.userId()); }
-        });
+    onSuccess: function(formType, result) {
         swal({
             title: "¡Correcto!",
-            text: "Perfil modificado correctamente",
+            text: "El perfil se ha modificado con éxito",
             timer: 2000,
             type: "success"
         });
-    }
+    },
 });
+

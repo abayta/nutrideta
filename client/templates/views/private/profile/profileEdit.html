@@ -4,6 +4,7 @@
 
 
     {{#staggering}}
+
         <div class="content">
 
             <div class="row">
@@ -11,15 +12,18 @@
                     {{#panel}}
                         <div class="text-center m-b-md" id="wizardControl">
 
-                            <a class="btn btn-primary" id="btnStep1" href="#step1" onclick="changeBtn(this);" data-toggle="tab">Paso 1 - Datos personales</a>
-                            <a class="btn btn-default" id="btnStep2" href="#step2" onclick="changeBtn(this);" data-toggle="tab">Paso 2 - Datos
+                            <a class="option btn btn-primary" id="btnStep1" href="#step1" data-toggle="tab">Paso 1 -
+                                Datos personales</a>
+                            <a class="option btn btn-default" id="btnStep2" href="#step2" data-toggle="tab">Paso 2 -
+                                Datos
                                 del nutricionista</a>
-                            <a class="btn btn-default" id="btnStep3" href="#step3" onclick="changeBtn(this);" data-toggle="tab">Paso 3 - Redes sociales</a>
+                            <a class="option btn btn-default" id="btnStep3" href="#step3" data-toggle="tab">Paso 3 -
+                                Redes sociales</a>
 
                         </div>
-                        {{#autoForm collection='Meteor.users' schema="Schema.UserProfile" doc=this type='update' id='profileEdit'}}
-                        <div class="tab-content">
-                            <div id="step1" class="p-m tab-pane active">
+                        {{#autoForm collection='Meteor.users' schema="Schema.User" doc=currentUser type='update' id='profileEdit'}}
+                            <div class="tab-content">
+                                <div id="step1" class="p-m tab-pane active">
                                     <div class="row">
                                         <div class="col-lg-3 text-center">
                                             <i class="pe-7s-user fa-5x text-muted"></i>
@@ -39,114 +43,122 @@
                                                 </div>
                                                 <div class="form-group col-lg-6">
                                                     <label>Nombre</label>
-                                                    {{> afFieldInput name='firstName' class="form-control"}}
+                                                    {{> afFieldInput name='userProfile.firstName' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
                                                     <label>Apellidos</label>
-                                                    {{> afFieldInput name='lastName' class="form-control"}}
+                                                    {{> afFieldInput name='userProfile.lastName' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
                                                     <label>Teléfono</label>
-                                                    {{> afFieldInput name='phone' class="form-control"}}
+                                                    {{> afFieldInput name='userProfile.phone' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
                                                     <label>Fecha nacimiento</label>
-                                                    {{> afFieldInput name='birthday' class="form-control"}}
+                                                    {{> afFieldInput name='userProfile.birthday' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
                                                     <label>País</label>
-                                                    {{> afFieldInput name='country' class="form-control"}}
+                                                    {{> afFieldInput name='userProfile.country' class="form-control"}}
                                                 </div>
                                                 <div class="form-group col-lg-6">
-                                                    <label>Correo personal</label>
-                                                    {{> afFieldInput name='personalEmail' class="form-control"}}
+                                                    <label>Genero</label>
+                                                    {{> afFieldInput name='userProfile.gender' class="form-control"}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
 
-                                <div class="text-right m-t-xs">
-                                    <a id="btn1" class="btn btn-default next" onclick="$('#btnStep2').click();">Siguiente</a>
+                                    <div class="text-right m-t-xs">
+                                        <a id="btn1" class="btn btn-default next" onclick="$('#btnStep2').click();">Siguiente</a>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                                <div id="step2" class="p-m tab-pane">
 
-                            <div id="step2" class="p-m tab-pane">
+                                    <div class="row">
+                                        <div class="col-lg-3 text-center">
+                                            <i class="pe-7s-study fa-5x text-muted"></i>
 
-                                <div class="row">
-                                    <div class="col-lg-3 text-center">
-                                        <i class="pe-7s-study fa-5x text-muted"></i>
-
-                                        <p class="small m-t-md">
-                                            <strong>It is a long</strong> established fact that a reader will be
-                                            distracted by the readable
-                                            <br/><br/>Many desktop publishing packages and web page editors now use
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-9">
-                                        <div class="row">
-                                            <div class="form-group col-lg-6">
-                                                <label>Compañía</label>
-                                                {{> afFieldInput name='company' class="form-control"}}
-                                            </div>
-                                            <div class="form-group col-lg-6">
-                                                <label>Dirección</label>
-                                                {{> afFieldInput name='adress' class="form-control"}}
-                                            </div>
-                                            <div class="form-group col-lg-12">
-                                                <label>Descripción personal</label>
-                                                {{> afFieldInput name='description' rows=6 class="form-control"}}
+                                            <p class="small m-t-md">
+                                                <strong>It is a long</strong> established fact that a reader will be
+                                                distracted by the readable
+                                                <br/><br/>Many desktop publishing packages and web page editors now use
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6">
+                                                    <label>Correo personal</label>
+                                                    {{> afFieldInput name='nutritionistProfile.personalEmail' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label>Página web</label>
+                                                    {{> afFieldInput name='nutritionistProfile.website' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label>Compañía</label>
+                                                    {{> afFieldInput name='nutritionistProfile.company' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label>Dirección</label>
+                                                    {{> afFieldInput name='nutritionistProfile.adress' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-12">
+                                                    <label>Descripción personal</label>
+                                                    {{> afFieldInput name='nutritionistProfile.description' rows=6 class="form-control"}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-right m-t-xs">
-                                    <a class="btn btn-default prev" onclick="$('#btnStep1').click();">Anterior</a>
-                                    <a class="btn btn-default next" onclick="$('#btnStep3').click();">Siguiente</a>
-                                </div>
-
-                            </div>
-
-                            <div id="step3" class="p-m tab-pane">
-
-                                <div class="row">
-                                    <div class="col-lg-3 text-center">
-                                        <i class="pe-7s-chat fa-5x text-muted"></i>
-
-                                        <p class="small m-t-md">
-                                            <strong>It is a long</strong> established fact that a reader will be
-                                            distracted by the readable
-                                            <br/><br/>Many desktop publishing packages and web page editors now use
-                                        </p>
+                                    <div class="text-right m-t-xs">
+                                        <a class="btn btn-default prev" onclick="$('#btnStep1').click();">Anterior</a>
+                                        <a class="btn btn-default next" onclick="$('#btnStep3').click();">Siguiente</a>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <div class="row">
-                                            <div class="form-group col-lg-6">
-                                                <label>Facebook</label>
-                                                {{> afFieldInput name='facebook' class="form-control"}}
-                                            </div>
-                                            <div class="form-group col-lg-6">
-                                                <label>Twitter</label>
-                                                {{> afFieldInput name='twitter' class="form-control"}}
-                                            </div>
-                                            <div class="form-group col-lg-6">
-                                                <label>Instagram</label>
-                                                {{> afFieldInput name='instagram' class="form-control"}}
-                                            </div>
-                                            <div class="form-group col-lg-6">
-                                                <label>Youtube</label>
-                                                {{> afFieldInput name='youtube' class="form-control"}}
+
+                                </div>
+
+                                <div id="step3" class="p-m tab-pane">
+
+                                    <div class="row">
+                                        <div class="col-lg-3 text-center">
+                                            <i class="pe-7s-chat fa-5x text-muted"></i>
+
+                                            <p class="small m-t-md">
+                                                <strong>It is a long</strong> established fact that a reader will be
+                                                distracted by the readable
+                                                <br/><br/>Many desktop publishing packages and web page editors now use
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6">
+                                                    <label>Facebook</label>
+                                                    {{> afFieldInput name='nutritionistProfile.facebook' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label>Twitter</label>
+                                                    {{> afFieldInput name='nutritionistProfile.twitter' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label>Instagram</label>
+                                                    {{> afFieldInput name='nutritionistProfile.instagram' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label>Youtube</label>
+                                                    {{> afFieldInput name='nutritionistProfile.youtube' class="form-control"}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-right m-t-xs">
-                                    <a class="btn btn-default prev" onclick="$('#btnStep2').click();">Anterior</a>
-                                    <button type='submit' class="btn btn-default next">Guardar</button>
+                                    <div class="text-right m-t-xs">
+                                        <a class="btn btn-default prev" onclick="$('#btnStep2').click();">Anterior</a>
+                                        <button type='submit' class="btn btn-default next">Guardar</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         {{/autoForm}}
                         <div class="m-t-md">
 
@@ -166,7 +178,7 @@
     {{/staggering}}
 
     <script>
-        function changeBtn(event){
+        function changeBtn(event) {
             /*debugger;
             var btn = $(event.target);
             if ($(event.target).hasClass('btn-default')){

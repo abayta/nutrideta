@@ -103,30 +103,28 @@ Router.route('/login', function () {
 
 /////////////////// Private route /////////////////////
 
+//Pruebas
+
 // Dashboard route
 
 Router.route('/dashboard', function () {
+    Meteor.subscribe('currentUser');
     this.render('dashboard');
 });
 
 // Profile route
 
-Router.route('/profile', {
-    name: 'profile',
-    waitOn: function() {
-        return Meteor.subscribe('user', this.params._id);
-    },
-    data: function() { return Meteor.users.findOne(this.params._id); }
+Router.route('/profile', function () {
+    Meteor.subscribe('currentUser');
+    this.render('profile');
 });
 
 // Profile edit route
 
-Router.route('/profileEdit', {
-    name: 'profileEdit',
-    waitOn: function() {
-        return Meteor.subscribe('user', this.params._id);
-    },
-    data: function() { return Meteor.users.findOne(this.params._id); }
+Router.route('/profileEdit', function () {
+    Session.set("activeTab","btnStep1");
+    Meteor.subscribe('currentUser');
+    this.render('profileEdit');
 });
 
 // Notes route
