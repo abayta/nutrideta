@@ -81,18 +81,18 @@ Meteor.methods({
     //@Method añade el rol 'free' y el grupo 'nutricionista' al usuario pasado por id
     addUserRoleFreeNutritionist: function (id) {
         check(id, String);
-        Roles.addUsersToRoles(id, 'free', 'nutricionista');
+        Roles.addUsersToRoles(id, 'free', 'nutricionist');
     },
 
     //@Method añade el rol 'paid' y el grupo 'nutricionista' al usuario pasado por id
     addUserRolePaidNutritionist: function (id) {
         check(id, String);
-        Roles.addUsersToRoles(user, 'paid', 'nutricionista');
+        Roles.addUsersToRoles(id, 'paid', 'nutricionist');
     },
 
     //@Method añade el rol 'user' y el grupo 'usuario' al usuario pasado por id
     addUserRoleUser: function (id) {
         check(id, String);
-        Roles.addUsersToRoles(user, 'user', 'usuario');
+        Roles.addUsersToRoles(id, 'user', 'user');
     },
 });

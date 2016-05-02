@@ -3,16 +3,16 @@
  */
 
 Template.profileEdit.events({
-    'click .option': function(event){
+    'click .option': function (event) {
         var optionId = event.currentTarget.id;
-        Session.set("activeTab",optionId);
+        Session.set("activeTab", optionId);
         //i is the position, obj is the DOM object
-        $('.option').each(function(i, obj) {
-            $("#"+obj.id).removeClass('btn-primary');
-            $("#"+obj.id).addClass('btn-default');
+        $('.option').each(function (i, obj) {
+            $("#" + obj.id).removeClass('btn-primary');
+            $("#" + obj.id).addClass('btn-default');
         });
-        $("#"+optionId).removeClass('btn-default');
-        $("#"+optionId).addClass('btn-primary')
+        $("#" + optionId).removeClass('btn-default');
+        $("#" + optionId).addClass('btn-primary')
     }
 });
 
@@ -25,11 +25,12 @@ Template.profileEdit.helpers({
     active: function () {
         var active = Session.get("activeTab");
         return Template[active];
-    }});
+    }
+});
 
 AutoForm.addHooks(['profileEdit'], {
     // Called when any submit operation fails
-    onError: function(formType, error) {
+    onError: function (formType, error) {
         swal({
             title: "¡Se ha producido un error!",
             text: "No ha sido posible guardar el perfil",
@@ -38,13 +39,21 @@ AutoForm.addHooks(['profileEdit'], {
         });
     },
     // Called when any submit operation succeeds
-    onSuccess: function(formType, result) {
+    onSuccess: function (formType, result) {
         swal({
             title: "¡Correcto!",
             text: "El perfil se ha modificado con éxito",
             timer: 2000,
             type: "success"
         });
+        //Add focus on step1
+        Session.set("activeTab", "btnStep1");
+        $('.option').each(function (i, obj) {
+            $("#" + obj.id).removeClass('btn-primary');
+            $("#" + obj.id).addClass('btn-default');
+        });
+        $("#btnStep1").removeClass('btn-default');
+        $("#btnStep1").addClass('btn-primary');
     },
 });
 

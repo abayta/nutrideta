@@ -57,8 +57,8 @@ var filters = {
     }
   },  // end authenticate
   nutricionista: function () {
-    console.log('[nutricionista]')
-    if (Roles.userIsInRole(Meteor.userId(), 'nutricionista')) {
+    console.log('[nutricionist]')
+    if (Roles.userIsInRole(Meteor.userId(), 'nutricionist')) {
       this.next()
     } else {
       Meteor.navigateTo('/')
@@ -146,6 +146,7 @@ Router.route('/messages', function () {
 
 Router.route('/clients', function(){
     Session.set("activeClients","allClients");
+    Meteor.subscribe('clientsByNutritionist', Meteor.userId());
     this.render('clients');
 })
 

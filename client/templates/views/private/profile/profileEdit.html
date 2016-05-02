@@ -41,29 +41,37 @@
                                                 <div class="form-group col-lg-12">
 
                                                 </div>
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-3">
                                                     <label>Nombre</label>
                                                     {{> afFieldInput name='userProfile.firstName' class="form-control"}}
                                                 </div>
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-3">
                                                     <label>Apellidos</label>
                                                     {{> afFieldInput name='userProfile.lastName' class="form-control"}}
                                                 </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label>Teléfono</label>
-                                                    {{> afFieldInput name='userProfile.phone' class="form-control"}}
+                                                <div class="form-group col-lg-3">
+                                                    <label>Personal email</label>
+                                                    {{> afFieldInput name='userProfile.personalEmail' class="form-control"}}
                                                 </div>
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-3">
+                                                    <label>Teléfono</label>
+                                                    {{> afFieldInput name='userProfile.personalPhone' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-3">
                                                     <label>Fecha nacimiento</label>
                                                     {{> afFieldInput name='userProfile.birthday' class="form-control"}}
                                                 </div>
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-3">
                                                     <label>País</label>
                                                     {{> afFieldInput name='userProfile.country' class="form-control"}}
                                                 </div>
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-3">
                                                     <label>Genero</label>
                                                     {{> afFieldInput name='userProfile.gender' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-12">
+                                                    <label>Bio</label>
+                                                    {{> afFieldInput name='userProfile.bio' rows=6 class="form-control"}}
                                                 </div>
                                             </div>
                                         </div>
@@ -90,15 +98,7 @@
                                         </div>
                                         <div class="col-lg-9">
                                             <div class="row">
-                                                <div class="form-group col-lg-6">
-                                                    <label>Correo personal</label>
-                                                    {{> afFieldInput name='nutritionistProfile.personalEmail' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label>Página web</label>
-                                                    {{> afFieldInput name='nutritionistProfile.website' class="form-control"}}
-                                                </div>
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-3">
                                                     <label>Compañía</label>
                                                     {{> afFieldInput name='nutritionistProfile.company' class="form-control"}}
                                                 </div>
@@ -106,8 +106,20 @@
                                                     <label>Dirección</label>
                                                     {{> afFieldInput name='nutritionistProfile.adress' class="form-control"}}
                                                 </div>
+                                                <div class="form-group col-lg-3">
+                                                    <label>Correo electronico</label>
+                                                    {{> afFieldInput name='nutritionistProfile.profesionalEmail' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label>Página web</label>
+                                                    {{> afFieldInput name='nutritionistProfile.website' class="form-control"}}
+                                                </div>
+                                                <div class="form-group col-lg-3">
+                                                    <label>Nutritonist Phone</label>
+                                                    {{> afFieldInput name='nutritionistProfile.nutritionistPhone' class="form-control"}}
+                                                </div>
                                                 <div class="form-group col-lg-12">
-                                                    <label>Descripción personal</label>
+                                                    <label>Descripción de la compañia</label>
                                                     {{> afFieldInput name='nutritionistProfile.description' rows=6 class="form-control"}}
                                                 </div>
                                             </div>

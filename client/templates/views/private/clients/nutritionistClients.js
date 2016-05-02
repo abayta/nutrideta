@@ -1,37 +1,33 @@
 if (Meteor.isClient) {
-    Template.register.onRendered(function () {
-
-        // Initialize iCheck plugin
-        $('.i-checks').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
-        });
-
-    });
-    
     AutoForm.hooks({
-        signUpForm: {
+        signUpClientForm: {
             onSubmit: function (data) {
                 this.event.preventDefault();
-                Accounts.createUser(data, function (err) {
+                Meteor.call('createNewClient', data, function(err, result) {
                     if (err) {
                         swal({
                             title: "¡Error!",
-                            text: "Ha ocurrido un error a la hora de crear la cuenta",
+                            text: "Ha ocurrido un error al crear el cliente",
                             type: "error",
                             html: true
                         });
                     } else {
                         //Llamamos al metodo de añadir los roles
-                        Meteor.call('addUserRoleFreeNutritionist', Meteor.userId());
+                        Meteor.call('addUserRoleUser', result);
                         var email = data.email;
                         //Mandamos mensaje de bienvenida
                         Meteor.call('sendRegisterEmail', email);
+                        //Añadimos el cliente al nutricionista
+                        Meteor.call('addClientToNutricionist', result);
+                        //Añadimos el nutricionista al cliente
+                        Meteor.call('addNutricionistToClient', result);
+                        //Return to clients view
+                        Session.set("activeClients","allClients");
+                        Router.go('/clients');
 
-                        Router.go('/dashboard');
                         swal({
-                            title: "¡Usuario creado satisfactoriamente!",
-                            text: "Bienvenido a Nutrideta.com",
+                            title: "¡Cliente creado satisfactoriamente!",
+                            text: "Gracias por crear el nuevo cliente",
                             timer: 2000,
                             type: "success"
                         });
