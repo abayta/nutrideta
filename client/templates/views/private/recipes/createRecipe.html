@@ -39,6 +39,7 @@
         {{#each getIngredients}}
             <div id="{{_id}}" draggable="true" ondragstart="drag(event)" >
                 <h4>{{name}}</h4>
+                <button class="add-ingredient" type="button" id="{{_id}}">Add</button>
             </div>
         {{/each}}
     </div>
