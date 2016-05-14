@@ -48,3 +48,6 @@ ecmascript
 es5-shim
 utilities:avatar
 meteorhacks:search-source
+simple:reactive-method
+aldeed:autoform-select2
+natestrauser:select2

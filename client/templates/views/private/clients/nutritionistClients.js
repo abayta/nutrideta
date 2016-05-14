@@ -38,3 +38,10 @@ if (Meteor.isClient) {
     });
 
 }
+
+Template.allClients.helpers({
+    'clients': function () {
+        var currentUserId = Meteor.userId();
+        return Meteor.users.find({});
+    }
+});

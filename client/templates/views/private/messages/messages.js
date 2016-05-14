@@ -3,31 +3,45 @@
  */
 
 Template.messages.events({
-    'click .option': function(event){
+    'click .option': function (event) {
         var optionId = event.currentTarget.id;
-        Session.set("activeMessages",optionId);
+        if (optionId == "createMessage") {
+            Session.set("messages", optionId);
+            Session.set("activeMessages", "usersAvailableMessage");
+        } else if (optionId == "viewMessage") {
+            Session.set("messages", optionId);
+            Session.set("activeMessages", "none");
+        } else {
+            Session.set("messages", "mailbox");
+            Session.set("activeMessages", optionId);
+        }
         //i is the position, obj is the DOM object
-        $('.option').each(function(i, obj) {
-            $("#"+obj.id).removeClass('active');
+        $('.option').each(function (i, obj) {
+            $("#" + obj.id).removeClass('active');
         });
-        $("#"+optionId).addClass('active')
+        $("#" + optionId).addClass('active')
     }
-});
-
-//Equals function to compare two strings for change a template
-Template.registerHelper('equals', function (a, b) {
-    return a === b;
 });
 
 Template.messages.helpers({
     active: function () {
-        var active = Session.get("activeMessages");
+        var active = Session.get("messages");
         return Template[active];
-}});
+    },
+    emailUsers: function () {
+        return Meteor.userId();
+    }
+});
+
+Template.messages.onCreated(function messagesOnCreated() {
+    this.autorun(() => {
+        Meteor.subscribe(Session.get("activeMessages"));
+    });
+});
 
 AutoForm.addHooks(['createMessages'], {
     // Called when any submit operation fails
-    onError: function(formType, error) {
+    onError: function (formType, error) {
         swal({
             title: "¡Se ha producido un error!",
             text: "No ha sido posible enviar el mensaje",
@@ -36,7 +50,7 @@ AutoForm.addHooks(['createMessages'], {
         });
     },
     // Called when any submit operation succeeds
-    onSuccess: function(formType, result) {
+    onSuccess: function (formType, result) {
         swal({
             title: "¡Enviado!",
             text: "El mensaje ha sido enviado correctamente",
@@ -45,3 +59,16 @@ AutoForm.addHooks(['createMessages'], {
         });
     },
 });
+
+
+Template.mailbox.helpers({
+    messages: function () {
+        return Messages.find({}, {sort: {createdAt: -1}});
+    },
+    senderName: function (id) {
+        var user = Meteor.users.findOne({_id: id}, {fields: {username: 1}});
+        return user.username;
+    }
+});
+
+

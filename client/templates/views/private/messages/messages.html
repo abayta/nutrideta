@@ -11,9 +11,8 @@
                     <div class="hpanel">
                         <div class="panel-body">
                             <ul class="mailbox-list">
-                                <li>
-                                    <a data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i>
-                                        Redactar</a>
+                                <li class="option" id="createMessage">
+                                    <a href="#"><i class="fa fa-plus"></i> New message</a>
                                 </li>
                             </ul>
                             <hr>
@@ -37,66 +36,94 @@
                                     <a href="#"><i class="fa fa-bell text-danger"></i> Importante</a>
                                 </li>
                                 <li class="option" id="private">
-                                    <a href="#"><i class="fa fa-lock text-info" style="margin-left: 3px;"></i> Privado</a>
+                                    <a href="#"><i class="fa fa-lock text-info" style="margin-left: 3px;"></i>
+                                        Privado</a>
                                 </li>
                             </ul>
                         </div>
 
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <div class="hpanel">
-                        <div class="panel-heading hbuilt">
-                            <div class="text-center p-xs font-normal">
-                                <div class="input-group"><input type="text" class="form-control input-sm"
-                                                                placeholder="Buscar email.."> <span
-                                        class="input-group-btn"> <button type="button" class="btn btn-sm btn-default">
-                                    Buscar
-                                </button> </span></div>
-                            </div>
-                        </div>
-                        <br>
-                        {{> active}}
-                    </div>
-                </div>
+
+                {{> active}}
+
             </div>
-
-            <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="color-line"></div>
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title">Redactar mensaje privado</h4>
-                            <small class="font-bold">Puede elegir a más de un destinatario
-                            </small>
-                        </div>
-                        <form id="createNotesForm">
-                            <div class="modal-body">
-                                {{> quickForm
-                                collection="Messages"
-
-                                id="createMessages"
-                                type="method"
-                                meteormethod="Messages.methods.insert"
-                                resetOnSuccess=true}}
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" id="cerrarBtn1" class="btn btn-default"
-                                        data-dismiss="modal">
-                                    Cerrar
-                                </button>
-                                <button type="submit" id="guardar" class="btn btn-primary">Guardar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
         </div>
-
     {{/staggering}}
 
+</template>
+
+<template name="mailbox">
+    <div class="col-md-9">
+        <div class="hpanel">
+            <div class="panel-heading hbuilt">
+                <div class="text-center p-xs font-normal">
+                    <div class="input-group"><input type="text" class="form-control input-sm"
+                                                    placeholder="Buscar email.."> <span
+                            class="input-group-btn"> <button type="button" class="btn btn-sm btn-default">
+                        Buscar
+                    </button> </span></div>
+                </div>
+            </div>
+            <br>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6 m-b-md">
+                        <div class="btn-group">
+                            <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mailbox-pagination m-b-md">
+                        <div class="btn-group">
+                            <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                            <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-mailbox">
+
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Sender</th>
+                            <th>Subject</th>
+                            <th>Attachment</th>
+                            <th class="text-right">Time</th>
+                        </tr>
+                        </thead>
+
+                        <br>
+
+                        <tbody>
+                        {{#each messages}}
+                            <tr class="{{#if viewed}}unread{{/if}}">
+                                <td>
+                                    <div class="checkbox">
+                                        <input type="checkbox">
+                                        <label></label>
+                                    </div>
+                                </td>
+                                <td><a href="#">{{senderName sender}}</a></td>
+                                <td><a href="#">{{title}}</a>
+                                </td>
+                                <td></td>
+                                <td class="text-right mail-date">Tue, Nov 25</td>
+                            </tr>
+                        {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <i class="fa fa-eye"> </i> 86 mensajes en total
+            </div>
+        </div>
+    </div>
 </template>
 

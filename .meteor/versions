@@ -2,11 +2,13 @@ accounts-base@1.2.2
 accounts-password@1.1.4
 alanning:roles@1.2.14
 aldeed:autoform@5.8.1
+aldeed:autoform-select2@2.0.2
 aldeed:collection2@2.8.0
 aldeed:collection2-core@1.0.0
 aldeed:schema-deny@1.0.1
 aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
+aldeed:template-extension@3.4.3
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -101,6 +103,7 @@ mongo-livedata@1.0.9
 msavin:jetsetter@1.5.2
 msavin:mongol@1.6.2
 natestrauser:animate-css@3.4.0
+natestrauser:select2@4.0.2
 npm-bcrypt@0.7.8_2
 npm-container@1.2.0
 npm-mongo@1.4.39_1
@@ -120,6 +123,7 @@ sacha:spin@2.3.1
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
+simple:reactive-method@1.0.2
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4

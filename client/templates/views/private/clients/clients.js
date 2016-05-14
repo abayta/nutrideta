@@ -18,4 +18,9 @@ Template.clients.helpers({
     active: function () {
         var active = Session.get("activeClients");
         return Template[active];
-    }});
+    },
+    'clients': function () {
+        var currentUserId = Meteor.userId();
+        return Meteor.users.find({});
+    }
+});

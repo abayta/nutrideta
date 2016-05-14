@@ -137,8 +137,8 @@ Router.route('/notes', function () {
 // Messages route
 
 Router.route('/messages', function () {
+    Session.set("messages","mailbox");
     Session.set("activeMessages","inbox");
-    Meteor.subscribe('inbox');
     this.render('messages');
 });
 
@@ -146,7 +146,7 @@ Router.route('/messages', function () {
 
 Router.route('/clients', function(){
     Session.set("activeClients","allClients");
-    Meteor.subscribe('clientsByNutritionist', Meteor.userId());
+    Meteor.subscribe('clientsByNutritionist');
     this.render('clients');
 })
 
