@@ -1,0 +1,91 @@
+<template name="chat">
+
+    {{#staggering}}
+
+        <div class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hpanel ">
+                        <div class="panel-heading hbuilt">
+                            <div class="panel-tools">
+                                <a class="closebox"><i class="fa fa-times"></i></a>
+                            </div>
+                            Chat room
+                        </div>
+                        <div class="panel-body no-padding">
+
+
+                            <div class="row">
+
+                                <div class="col-md-9 ">
+                                    <div class="chat-discussion">
+
+<!--                                        <div class="chat-message left">
+                                            <img class="message-avatar" src="images/a2.jpg" alt="" >
+                                            <div class="message">
+                                                <a class="message-author" href="#"> Michael Smith </a>
+                                                <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
+                                            <span class="message-content">
+											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div class="chat-message right">
+                                            <img class="message-avatar" src="images/a2.jpg" alt="" >
+                                            <div class="message">
+                                                <a class="message-author" href="#"> Michael Smith </a>
+                                                <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
+                                            <span class="message-content">
+											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+                                            </span>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="chat-users">
+                                        <div class="users-list">
+                                            {{#each usersOnline}}
+                                            <div class="chat-user" align="center">
+                                                <span class="pull-right label label-success">Online</span>
+                                                <img class="chat-avatar" src="images/a3.jpg" alt="" >
+                                                <div class="chat-user-name">
+                                                    <a href="#">{{name}} {{lastName}} ({{username}})</a>
+                                                </div>
+                                            </div>
+                                                {{else}}
+                                            <div class="chat-user" align="center">
+                                                    <i class="pe pe-7s-users med-icon text-warning"></i>
+                                                    <h4 class="font-bold">
+                                                        No hay usuarios conectados
+                                                    </h4>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Type your message here...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success">
+                                Send</button>
+                        </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    {{/staggering}}
+</template>
+
+

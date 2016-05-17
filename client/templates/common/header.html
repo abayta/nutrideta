@@ -12,19 +12,14 @@
             <div class="small-logo">
                 <span class="text-primary">NUTRIDETA</span>
             </div>
-            <form role="search" class="navbar-form-custom" method="post" action="#">
-                <div class="form-group">
-                    <input type="text" placeholder="Buscar..." class="form-control" name="search">
-                </div>
-            </form>
             <div class="mobile-menu">
-                <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
+                <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse" id="collapseItem">
                     <i class="fa fa-chevron-down"></i>
                 </button>
                 <div class="collapse mobile-navbar" id="mobile-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a class="" href="{{pathFor route='profile'}}">Perfil</a>
+                            <a class="" href="{{pathFor route='profile'}}" onclick="$('#collapseItem').click()">Perfil</a>
                         </li>
                         <li>
                             <a class="" href="{{pathFor route='login'}}">Logout</a>

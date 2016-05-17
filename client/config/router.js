@@ -150,6 +150,12 @@ Router.route('/clients', function(){
     this.render('clients');
 })
 
+// Chat route
+Router.route('/chat', function () {
+    Meteor.subscribe('usersOnline');
+    this.render('chat');
+});
+
 //TEST ROUTE ABA RECIPES
 
 Router.route('/createRecipe', function () {
