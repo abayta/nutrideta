@@ -87,6 +87,11 @@ Router.route('/inicio', function () {
     this.layout('landingLayout');
 });
 
+Router.route('/error404', function () {
+    this.render('error404');
+    this.layout('blank-layout');
+});
+
 // Register route
 
 Router.route('/register', function () {
@@ -151,10 +156,36 @@ Router.route('/clients', function(){
 })
 
 // Chat route
-Router.route('/chat', function () {
-    Meteor.subscribe('usersOnline');
+/*Router.route('/chat', function () {
+    var currentUser = Meteor.userId();
+    if (Roles.userIsInRole(Meteor.userId(), 'nutritionist')){
+        alert("HOLA");
+    }
+    if (Roles.userIsInRole(currentUser, ['paid', 'free'])) {
+        alert("Entro aqui1");
+        Meteor.subscribe('usersOnlineNutri');
+    } else if (Roles.userIsInRole(currentUser, ['user'])) {
+        alert("Entro aqui2");
+        Meteor.subscribe('nutricionistOnline');
+    }
     this.render('chat');
-});
+});*/
+
+Router.route('/chat',
+    {
+        onBeforeAction: function() {
+            var currentUser = Meteor.userId();
+            if (!(Meteor.userId())) {
+                Router.go('error404');
+            }
+            else if (Roles.userIsInRole(currentUser, ['paid', 'free'])){
+                Meteor.subscribe('usersOnlineNutri');
+            }
+            else if (Roles.userIsInRole(currentUser, ['user'])){
+                Meteor.subscribe('nutricionistOnline');
+            }
+            else this.next();
+        }});
 
 //TEST ROUTE ABA RECIPES
 
@@ -185,7 +216,7 @@ var requireLogin = function() {
         if (Meteor.loggingIn()) {
             this.render(this.loadingTemplate);
         } else {
-            this.render('accessDenied');
+            this.render('error404');
         }
     } else {
         this.next();

@@ -20,9 +20,34 @@ Meteor.startup(function () {
 
 });
 */
-
-Meteor.publish('usersOnline', function(){
-    return Meteor.users.find({ "status.online": true })
+//Clientes online de un nutricionista
+Meteor.publish('usersOnlineNutri', function(){
+    if (Roles.userIsInRole(this.userId, ['paid', 'free'], 'nutritionist')) {
+    var currentNutricionist = this.userId;
+    return Meteor.users.find({$and: [{"status.online": true}, {nutricionistId: currentNutricionist}]}, {
+        sort: {username: 1}
+    });
+    } else {
+        this.stop();
+        return;
+    }
 });
+
+//Nutricionista online para el cliente
+Meteor.publish('nutricionistOnline', function(){
+    if (Roles.userIsInRole(this.userId, ['user'], 'user')) {
+        var myself = Meteor.users.findOne(this.userId);
+        var idNutri = myself.nutricionistId;
+        return Meteor.users.find({$and: [{"status.online": true}, {_id: idNutri}]}, {
+            sort: {username: 1}
+        });
+    } else {
+        this.stop();
+        return;
+    }
+});
+
+
+
 
 
