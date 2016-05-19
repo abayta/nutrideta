@@ -57,12 +57,13 @@ var filters = {
     }
   },  // end authenticate
   nutricionista: function () {
-    console.log('[nutricionist]')
-    if (Roles.userIsInRole(Meteor.userId(), 'nutricionist')) {
-      this.next()
-    } else {
+      console.log('[nutricionist]')
+      var idU = Meteor.userId()
+      if (Roles.userIsInRole(Meteor.userId(),['free'],'nutricionist')) {
+          this.next()
+      } else {
       Meteor.navigateTo('/')
-    }
+      }
   }
 
 }  // end filters
@@ -195,7 +196,7 @@ Router.route('/createRecipe', function () {
 
 Router.route('/createIngredient', {
   template: 'createIngredient',
-  before: [filters.authenticate]
+  before: [filters.authenticate, filters.nutricionista]
 });
 
 Router.route('/listIngredients', function () {
