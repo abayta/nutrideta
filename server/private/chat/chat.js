@@ -22,7 +22,7 @@ Meteor.startup(function () {
 */
 //Clientes online de un nutricionista
 Meteor.publish('usersOnlineNutri', function(){
-    if (Roles.userIsInRole(this.userId, ['paid', 'free'], 'nutritionist')) {
+    if (Roles.userIsInRole(this.userId, ['paid', 'free'], 'nutricionist')) {
     var currentNutricionist = this.userId;
     return Meteor.users.find({$and: [{"status.online": true}, {nutricionistId: currentNutricionist}]}, {
         sort: {username: 1}
