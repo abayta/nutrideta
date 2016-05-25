@@ -4,6 +4,7 @@
 
 Template.chat.helpers({
     'usersOnline': function () {
-        return Meteor.users.find({});
+        var id = Meteor.userId();
+        return Meteor.users.find({_id:  {$ne : id}});
     }
 });

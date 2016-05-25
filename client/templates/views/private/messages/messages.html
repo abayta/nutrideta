@@ -68,54 +68,71 @@
             <br>
 
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-6 m-b-md">
-                        <div class="btn-group">
-                            <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Delete
-                            </button>
+                {{#with messages}}
+                    {{#if this.count}}
+                        <div class="row">
+                            <div class="col-md-6 m-b-md">
+                                <div class="btn-group">
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mailbox-pagination m-b-md">
+                                <div class="btn-group">
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 mailbox-pagination m-b-md">
-                        <div class="btn-group">
-                            <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
-                            <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    {{/if}}
+                {{/with}}
                 <div class="table-responsive">
                     <table class="table table-hover table-mailbox">
+                            {{#with messages}}
+                                {{#if this.count}}
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Sender</th>
+                                        <th>Subject</th>
+                                        <th>Attachment</th>
+                                        <th class="text-right">Time</th>
+                                    </tr>
+                                    </thead>
 
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>Sender</th>
-                            <th>Subject</th>
-                            <th>Attachment</th>
-                            <th class="text-right">Time</th>
-                        </tr>
-                        </thead>
+                                    <br>
 
-                        <br>
+                                    <tbody>
+                                    {{#each messages}}
+                                        <tr class="{{#if viewed}}unread{{/if}}">
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input type="checkbox">
+                                                    <label></label>
+                                                </div>
+                                            </td>
+                                            <td><a href="#">{{senderName sender}}</a></td>
+                                            <td><a href="#">{{title}}</a>
+                                            </td>
+                                            <td></td>
+                                            <td class="text-right mail-date">Tue, Nov 25</td>
+                                        </tr>
+                                    {{/each}}
+                                    </tbody>
+                                {{else}}
+                                <div align="center">
+                                    <i class="pe pe-7s-mail big-icon text-warning"></i>
+                                    <h4 class="font-bold">
+                                        No hay mensajes en esta bandeja
+                                    </h4>
 
-                        <tbody>
-                        {{#each messages}}
-                            <tr class="{{#if viewed}}unread{{/if}}">
-                                <td>
-                                    <div class="checkbox">
-                                        <input type="checkbox">
-                                        <label></label>
+                                    <p class="text-muted">
+                                        Aquí podrá encontrar los mensajes correspondientes a esta bandeja
+                                    </p>
                                     </div>
-                                </td>
-                                <td><a href="#">{{senderName sender}}</a></td>
-                                <td><a href="#">{{title}}</a>
-                                </td>
-                                <td></td>
-                                <td class="text-right mail-date">Tue, Nov 25</td>
-                            </tr>
-                        {{/each}}
-
-                        </tbody>
+                                {{/if}}
+                            {{/with}}
                     </table>
                 </div>
             </div>
