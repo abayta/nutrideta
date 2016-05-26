@@ -47,6 +47,11 @@ Meteor.publish('nutricionistOnline', function(){
     }
 });
 
+Meteor.publish('chat', function(idPar){
+    var currentUser = this.userId;
+        return Messages.find({$or: [{$and: [{sender: idPar}, {recipients: currentUser}]}, {$and: [{sender: currentUser}, {recipients: idPar}]}]})
+});
+
 
 
 

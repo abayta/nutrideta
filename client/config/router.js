@@ -156,23 +156,6 @@ Router.route('/clients', function () {
     this.render('clients');
 })
 
-// Chat route
-/*Router.route('/chat', function () {
- var currentUser = Meteor.userId();
- if (Roles.userIsInRole(Meteor.userId(), 'nutritionist')){
- alert("HOLA");
- }
- if (Roles.userIsInRole(currentUser, ['paid', 'free'])) {
- alert("Entro aqui1");
- Meteor.subscribe('usersOnlineNutri');
- } else if (Roles.userIsInRole(currentUser, ['user'])) {
- alert("Entro aqui2");
- Meteor.subscribe('nutricionistOnline');
- }
- this.render('chat');
- });*/
-
-
 Router.route('/chat', function () {
     var currentUser = Meteor.userId();
     if (!(Meteor.userId())) {
@@ -182,6 +165,7 @@ Router.route('/chat', function () {
     } else if (Roles.userIsInRole(currentUser, ['user'], 'user')) {
         Meteor.subscribe('nutricionistOnline');
     }
+    Session.set("activeChat", "none");
     this.render('chat');
 });
 

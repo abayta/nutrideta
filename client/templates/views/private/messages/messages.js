@@ -27,9 +27,6 @@ Template.messages.helpers({
     active: function () {
         var active = Session.get("messages");
         return Template[active];
-    },
-    emailUsers: function () {
-        return Meteor.userId();
     }
 });
 
@@ -39,34 +36,36 @@ Template.messages.onCreated(function messagesOnCreated() {
     });
 });
 
-AutoForm.addHooks(['createMessages'], {
-    // Called when any submit operation fails
-    onError: function (formType, error) {
-        swal({
-            title: "¡Se ha producido un error!",
-            text: "No ha sido posible enviar el mensaje",
-            type: "error",
-            html: true
-        });
-    },
-    // Called when any submit operation succeeds
-    onSuccess: function (formType, result) {
-        swal({
-            title: "¡Enviado!",
-            text: "El mensaje ha sido enviado correctamente",
-            timer: 2000,
-            type: "success"
-        });
-    },
-});
 
+AutoForm.hooks({
+    createMessages:{
+        // Called when any submit operation fails
+        onError: function (formType, error) {
+            swal({
+                title: "¡Se ha producido un error!",
+                text: "No ha sido posible enviar el mensaje",
+                type: "error",
+                html: true
+            });
+        },
+        // Called when any submit operation succeeds
+        onSuccess: function (formType, result) {
+            swal({
+                title: "¡Enviado!",
+                text: "El mensaje ha sido enviado correctamente",
+                timer: 2000,
+                type: "success"
+            });
+        },
+    }
+});
 
 Template.mailbox.helpers({
     messages: function () {
         return Messages.find({}, {sort: {createdAt: -1}});
     },
     senderName: function (id) {
-        var user = Meteor.users.findOne({_id: id}, {fields: {username: 1}});
+        var user = ReactiveMethod.call('findUser', id);
         return user.username;
     }
 });

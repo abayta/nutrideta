@@ -21,6 +21,6 @@ Template.clients.helpers({
     },
     'clients': function () {
         var currentUserId = Meteor.userId();
-        return Meteor.users.find({});
+        return Meteor.users.find({_id: {$ne: currentUserId}});
     }
 });

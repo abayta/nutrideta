@@ -21,55 +21,67 @@
                                 <div class="col-md-9 ">
                                     <div class="chat-discussion" align="center">
 
-                                            <i class="pe pe-7s-chat big-icon text-warning"></i>
-                                            <h4 class="font-bold">
-                                                Haz click en un cliente para comenzar a chatear
-                                            </h4>
+                                        {{#with messages}}
+                                            {{#if this.count}}
+                                                {{#each messages}}
+                                                    {{#if isSender this.sender }}
+                                                        <div class="chat-message left">
+                                                            <img class="message-avatar" src="images/a2.jpg" alt="">
+                                                            <div class="message">
+                                                                <a class="message-author" style="color: #62CB31;font-weight: bold;"> {{toUserName this.sender}} </a>
+                                                                <span class="message-date"> {{toDate createdAt}} </span>
+                                                                                    <span class="message-content">
+                                                                                    {{message}}
+                                                                                    </span>
+                                                            </div>
+                                                        </div>
+                                                    {{else}}
+                                                        <div class="chat-message right">
+                                                            <img class="message-avatar" src="images/a2.jpg" alt="">
+                                                            <div class="message">
+                                                                <a class="message-author" style="color: #62CB31;font-weight: bold;"> {{toUserName currentUser._id}} </a>
+                                                                <span class="message-date">  {{toDate createdAt}} </span>
+                                                                                    <span class="message-content">
+                                                                                        {{message}}
+                                                                                    </span>
+                                                            </div>
+                                                        </div>
+                                                    {{/if}}
+                                                {{/each}}
+                                            {{else}}
+                                                <i class="pe pe-7s-chat big-icon text-warning"></i>
+                                                <h4 class="font-bold">
+                                                    Haz click en un cliente para comenzar a chatear
+                                                </h4>
 
-                                            <p class="text-muted">
-                                                Los mensajes del chat no serán guardados en el sistema. Si desea guardarlos, utilice la mensajería interna.
-                                            </p>
-
-<!--                                        <div class="chat-message left">
-                                            <img class="message-avatar" src="images/a2.jpg" alt="" >
-                                            <div class="message">
-                                                <a class="message-author" href="#"> Michael Smith </a>
-                                                <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
-                                            <span class="message-content">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-                                            </span>
-                                            </div>
-                                        </div>
-                                        <div class="chat-message right">
-                                            <img class="message-avatar" src="images/a2.jpg" alt="" >
-                                            <div class="message">
-                                                <a class="message-author" href="#"> Michael Smith </a>
-                                                <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
-                                            <span class="message-content">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-                                            </span>
-                                            </div>
-                                        </div>-->
+                                                <p class="text-muted">
+                                                    Los mensajes del chat no serán guardados en el sistema. Si desea
+                                                    guardarlos,
+                                                    utilice la mensajería interna.
+                                                </p>
+                                            {{/if}}
+                                        {{/with}}
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="chat-users">
                                         <div class="users-list">
                                             {{#each usersOnline}}
-                                            <div class="chat-user" align="center">
-                                                <span class="pull-right label label-success">Online</span>
-                                                <img class="chat-avatar" src="images/a3.jpg" alt="" >
-                                                <div class="chat-user-name">
-                                                    <a href="#">{{name}} {{lastName}} ({{username}})</a>
+                                                <div class="chat-user" align="center">
+                                                    <span class="pull-right label label-success">Online</span>
+                                                    <img class="chat-avatar" src="images/a3.jpg" alt="">
+                                                    <div class="chat-user-name">
+                                                        <a class="user" id="{{_id}}">{{userProfile.firstName}}
+                                                            ({{username}})</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                                {{else}}
-                                            <div class="chat-user" align="center">
+                                            {{else}}
+                                                <div class="chat-user" align="center">
                                                     <i class="pe pe-7s-users med-icon text-warning"></i>
                                                     <h4 class="font-bold">
                                                         No hay usuarios conectados
                                                     </h4>
-                                            </div>
+                                                </div>
                                             {{/each}}
                                         </div>
                                     </div>
@@ -81,7 +93,8 @@
                                 <input type="text" class="form-control" placeholder="Type your message here...">
                         <span class="input-group-btn">
                             <button class="btn btn-success">
-                                Send</button>
+                                Send
+                            </button>
                         </span>
                             </div>
                         </div>
