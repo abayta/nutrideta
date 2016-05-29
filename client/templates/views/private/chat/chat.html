@@ -28,10 +28,11 @@
                                                         <div class="chat-message left">
                                                             <img class="message-avatar" src="images/a2.jpg" alt="">
                                                             <div class="message">
-                                                                <a class="message-author" style="color: #62CB31;font-weight: bold;"> {{toUserName this.sender}} </a>
+                                                                <a class="message-author"
+                                                                   style="color: #62CB31;font-weight: bold;"> {{toUserName this.sender}} </a>
                                                                 <span class="message-date"> {{toDate createdAt}} </span>
                                                                                     <span class="message-content">
-                                                                                    {{message}}
+                                                                                        {{message}}
                                                                                     </span>
                                                             </div>
                                                         </div>
@@ -39,7 +40,8 @@
                                                         <div class="chat-message right">
                                                             <img class="message-avatar" src="images/a2.jpg" alt="">
                                                             <div class="message">
-                                                                <a class="message-author" style="color: #62CB31;font-weight: bold;"> {{toUserName currentUser._id}} </a>
+                                                                <a class="message-author"
+                                                                   style="color: #62CB31;font-weight: bold;"> {{toUserName currentUser._id}} </a>
                                                                 <span class="message-date">  {{toDate createdAt}} </span>
                                                                                     <span class="message-content">
                                                                                         {{message}}
@@ -88,26 +90,28 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-footer">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Type your message here...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success">
+                            {{#if notEquals activeChat "none"}}
+                                <div class="panel-footer">
+                                    {{#autoForm collection="ChatMessages" id="createChatMessage" type="method" meteormethod="ChatMessages.methods.insert"}}
+                                        <div class="input-group">
+                                            {{> afFieldInput name="message" class="form-control"}}
+                                            {{> afFieldInput type="hidden" name="recipient" value=activeChat}}
+                                            <span class="input-group-btn">
+                            <button type="submit" id="createChatMessage" class="btn btn-success">
                                 Send
                             </button>
                         </span>
-                            </div>
-                        </div>
-
+                                        </div>
+                                    {{/autoForm}}
+                                </div>
+                            {{/if}}
                     </div>
-
-
                 </div>
-
             </div>
-
         </div>
     {{/staggering}}
 </template>
+
+
 
 

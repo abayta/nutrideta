@@ -44,9 +44,3 @@ Meteor.publish('private', function () {
     });
 });
 
-Meteor.publish('activeChat', function (otherUserId) {
-    var currentUser = this.userId;
-    return Messages.find({recipients: currentUser, category: {$ne: "Trash"}}, {sort: {createdAt: 1}, limit: 50});
-});
-
-

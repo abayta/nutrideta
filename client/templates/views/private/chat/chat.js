@@ -6,13 +6,12 @@ Template.chat.events({
     'click .user': function (event) {
         var optionId = event.currentTarget.id;
         Session.set("activeChat", optionId);
-        Meteor.subscribe("chat", optionId);
-    }
+    },
 });
 
 Template.chat.onCreated(function chatOnCreated() {
     this.autorun(() => {
-        Meteor.subscribe(Session.get("activeChat"));
+        Meteor.subscribe("chat", Session.get("activeChat"));
     });
 });
 
@@ -30,7 +29,9 @@ Template.chat.helpers({
         }
     },
     messages: function () {
-        return Messages.find({}, {sort: {createdAt: 1}});
+        var otherUser = Session.get("activeChat");
+        var currentUser = Meteor.userId();
+            return ChatMessages.find({$or: [{$and: [{sender: otherUser}, {recipient: currentUser}]}, {$and: [{sender: currentUser}, {recipient: otherUser}]}]}, {sort: {createdAt: 1}});
     },
     toDate: function (date) {
         return moment(date).format('MM-DD-YYYY HH:mm:ss');
@@ -38,5 +39,11 @@ Template.chat.helpers({
     toUserName: function (id) {
         var user = Meteor.users.findOne({ _id: id});
         return user.username;
-    }
+    },
+    activeChat: function() {
+        return Session.get('activeChat');
+    },
+    notEquals: function(a, b) {
+        return a !== b;
+    },
 });
