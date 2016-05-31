@@ -136,6 +136,7 @@ Router.route('/profileEdit', function () {
 // Notes route
 
 Router.route('/notes', function () {
+    Session.set("activePage", "1");
     Meteor.subscribe('notesByUser', Meteor.userId());
     this.render('notes');
 });

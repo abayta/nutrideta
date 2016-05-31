@@ -157,13 +157,31 @@ Template.notes.events({
                 }
             });
         });
+    },
+    'click #left': function (event) {
+        Session.set("activePage", "1");
+    },
+    'click #right': function (event) {
+        Session.set("activePage", "2");
     }
 });
 
 Template.notes.helpers({
     'notes': function () {
-        var currentUserId = Meteor.userId();
-        return Notes.find({}, {sort: {createdAt: -1}, titulo: 1});
+        var currentPage = parseInt(Session.get("activePage"));
+        var skipp = currentPage;
+        var limits = 0;
+        if (currentPage !== 1){
+            skipp = (currentPage * 5) - 10;
+            limits = skipp + 5;
+        } else {
+            skipp = 0;
+            limits = 5;
+        }
+        
+        return Notes.find({}, {skip: skipp, limit: limits});
+        /*{sort: {createdAt: -1}, titulo: 1}*/
+        
     }
 });
 
