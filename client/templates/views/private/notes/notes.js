@@ -159,34 +159,53 @@ Template.notes.events({
         });
     },
     'click #left': function (event) {
-        Session.set("activePage", "1");
+        var currentPage = Session.get("activePageNotes");
+        if (currentPage === 1) {
+            Session.set("activePageNotes", 1);
+        } else {
+            Session.set("activePageNotes", currentPage - 1);
+        }
+
     },
     'click #right': function (event) {
-        Session.set("activePage", "2");
+        var currentPage = Session.get("activePageNotes");
+        Session.set("activePageNotes", currentPage + 1);
     }
 });
 
 Template.notes.helpers({
     'notes': function () {
-        var currentPage = parseInt(Session.get("activePage"));
+        var currentPage = Session.get("activePageNotes");
         var skipp = currentPage;
         var limits = 0;
-        if (currentPage !== 1){
-            skipp = (currentPage * 5) - 10;
+        if (currentPage !== 1) {
+            skipp = (currentPage * 5) - 5;
             limits = skipp + 5;
         } else {
             skipp = 0;
             limits = 5;
         }
-        
-        return Notes.find({}, {skip: skipp, limit: limits});
-        /*{sort: {createdAt: -1}, titulo: 1}*/
-        
+
+        var count = Notes.find({}, {skip: skipp, limit: 5}).count();
+
+        if (count > 0) {
+            return Notes.find({}, {skip: skipp, limit: 5});
+        } else {
+            return Notes.find({}, {skip: 0, limit: 5});
+        }
+    },
+    'firstPage': function () {
+        return Session.get("activePageNotes") === 1;
+    },
+    'lastPage': function () {
+        var activePage = Session.get("activePageNotes");
+        var count = Notes.find({}).count();
+        var maxPages = Math.floor(count / 5);
+        var nextPage = count % 5;
+        if (nextPage != 0) {
+            maxPages++;
+        }
+        return activePage === maxPages;
     }
 });
 
-//Metodo para cortar o truncar cadenas
-Handlebars.registerHelper('trimString', function (passedString, startstring, endstring) {
-    var theString = passedString.substring(startstring, endstring);
-    return new Handlebars.SafeString(theString)
-});

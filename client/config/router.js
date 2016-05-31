@@ -88,11 +88,6 @@ Router.route('/inicio', function () {
     this.layout('landingLayout');
 });
 
-Router.route('/error404', function () {
-    this.render('error404');
-    this.layout('blank-layout');
-});
-
 // Register route
 
 Router.route('/register', function () {
@@ -136,7 +131,7 @@ Router.route('/profileEdit', function () {
 // Notes route
 
 Router.route('/notes', function () {
-    Session.set("activePage", "1");
+    Session.set("activePageNotes", 1);
     Meteor.subscribe('notesByUser', Meteor.userId());
     this.render('notes');
 });
@@ -160,7 +155,7 @@ Router.route('/clients', function () {
 Router.route('/chat', function () {
     var currentUser = Meteor.userId();
     if (!(Meteor.userId())) {
-        Router.go('error404');
+        Router.go('notFound');
     } else if (Roles.userIsInRole(Meteor.userId(), ['free','paid'], 'nutricionist')) {
         Meteor.subscribe('usersOnlineNutri');
     } else if (Roles.userIsInRole(currentUser, ['user'], 'user')) {
@@ -199,7 +194,7 @@ var requireLogin = function () {
         if (Meteor.loggingIn()) {
             this.render(this.loadingTemplate);
         } else {
-            this.render('error404');
+            this.render('notFound');
         }
     } else {
         this.next();

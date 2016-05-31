@@ -58,7 +58,7 @@ Meteor.methods({
 
 //Publicamos las notes de un usuario
 Meteor.publish('notesByUser', function(id) {
-    return Notes.find({createdBy: id}, {sort: {createdAt: 1}, limit: 10});
+    return Notes.find({createdBy: id}, {sort: {createdAt: -1}});
 });
 
 
