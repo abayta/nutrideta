@@ -165,6 +165,12 @@ Router.route('/chat', function () {
     this.render('chat');
 });
 
+Router.route('/calendar', function () {
+    Meteor.subscribe('clientsByNutritionist');
+    Meteor.subscribe('calendar');
+    this.render('calendar');
+});
+
 //TEST ROUTE ABA RECIPES
 
 Router.route('/createRecipe', function () {
