@@ -2,68 +2,61 @@
  * Created by a618052 on 08/06/2016.
  */
 
-Template.calendar.onRendered(function(){
-    // Initialize i-check plugin
-    $('.i-checks').iCheck({
-        checkboxClass: 'icheckbox_square-green',
-        radioClass: 'iradio_square-green'
-    });
-
-    // Initialize the external events
-    $('#external-events div.external-event').each(function() {
-
-        // store data so the calendar knows to render an event upon drop
-        $(this).data('event', {
-            title: $.trim($(this).text()), // use the element's text as the event title
-            stick: true // maintain when user navigates (see docs on the renderEvent method)
-        });
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-            zIndex: 1111999,
-            revert: true,      // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-        });
-
-    });
-
-
-    // Initialize the calendar
-
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
-    $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next Today',
+Template.calendar.helpers({
+    events: function () {
+        var fc = $('#calendar');
+        return function (start, end, tz, callback) {
+            //find all, because we've already subscribed to a specific range
+            var events = Dates.find().map(function (it) {
+                return {
+                    title: it.client,
+                    start: it.day.toISOString(),
+                    allDay: false
+                };
+            });
+            callback(events);
+        };
+    },
+    onEventClicked: function () {
+        return function (calEvent, jsEvent, view) {
+            alert("Event clicked: " + calEvent.title);
+        }
+    },
+    calendarHeader: function () {
+        return {
+            left: 'prev,next today myCustomButton',
             center: 'title',
-            right: 'Month'
-        },
-        editable: true,
-        droppable: true, // this allows things to be dropped onto the calendar
-        drop: function() {
-            // is the "remove after drop" checkbox checked?
-            if ($('#drop-remove').is(':checked')) {
-                // if so, remove the element from the "Draggable Events" list
-                $(this).remove();
-            }
-        },
-        events: [
-            {
-                id: 1,
-                title: 'Repeating Event',
-                start: new Date(y, m, d+4, 16, 0),
-                allDay: false
-            },
-            {
-                id: 2,
-                title: 'Repeating Event',
-                start: new Date(y, m, d+4, 16, 0),
-                allDay: false
-            },
-
-        ]
-    });
+            right: 'month,agendaWeek,agendaDay',
+        }
+    },
+    calendarOptions: function () {
+        return {
+            defaultEventMinutes: 20,
+            timezone: "Europe/Madrid"
+        }
+    },
 });
+
+Template.calendar.rendered = function () {
+    var fc = this.$('#calendar');
+    this.autorun(function () {
+        //1) trigger event re-rendering when the collection is changed in any way
+        //2) find all, because we've already subscribed to a specific range
+        Dates.find();
+        fc.fullCalendar('refetchEvents');
+    });
+};
+
+AutoForm.addHooks(['insertDateForm'], {
+    onSuccess: function (formType, result) {
+        $('#cerrarBtn2').click();
+    }
+})
+
+/*
+Template.calendar.events({
+    'click #newDate': function(event){
+        alert("Hola");
+    }
+});
+*/

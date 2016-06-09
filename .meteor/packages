@@ -54,3 +54,4 @@ natestrauser:select2
 percolate:synced-cron@=1.3.0
 mizzao:user-status
 zuuk:stale-session
+rzymek:fullcalendar

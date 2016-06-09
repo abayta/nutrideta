@@ -66,7 +66,7 @@ iron:core@1.0.11
 iron:dynamic-template@1.0.12
 iron:layout@1.0.12
 iron:location@1.0.11
-iron:middleware-stack@1.0.11
+iron:middleware-stack@1.1.0
 iron:router@1.0.12
 iron:url@1.0.11
 jparker:crypto-core@0.1.0
@@ -122,6 +122,7 @@ reactive-var@1.0.6
 reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
+rzymek:fullcalendar@2.7.2
 sacha:spin@2.3.1
 service-configuration@1.0.5
 session@1.1.1

@@ -156,7 +156,7 @@ Router.route('/chat', function () {
     var currentUser = Meteor.userId();
     if (!(Meteor.userId())) {
         Router.go('notFound');
-    } else if (Roles.userIsInRole(Meteor.userId(), ['free','paid'], 'nutricionist')) {
+    } else if (Roles.userIsInRole(Meteor.userId(), ['free', 'paid'], 'nutricionist')) {
         Meteor.subscribe('usersOnlineNutri');
     } else if (Roles.userIsInRole(currentUser, ['user'], 'user')) {
         Meteor.subscribe('nutricionistOnline');
@@ -165,11 +165,28 @@ Router.route('/chat', function () {
     this.render('chat');
 });
 
-Router.route('/calendar', function () {
-    Meteor.subscribe('clientsByNutritionist');
-    Meteor.subscribe('calendar');
-    this.render('calendar');
+/*Router.route('/calendar', function () {
+ Meteor.subscribe('clientsByNutritionist');
+ Meteor.subscribe('calendar');
+ this.render('calendar');
+ });*/
+
+Router.route('calendar', {
+    path: 'calendar',
+    waitOn: function () {
+        Meteor.subscribe('clientsByNutritionist');
+        return Meteor.subscribe('calendar')
+    },
+    data: function () {
+        if (this.ready()) {
+            this.render();
+            return Dates.find();
+        } else {
+            this.render('loading')
+        }
+    }
 });
+
 
 //TEST ROUTE ABA RECIPES
 

@@ -2,13 +2,47 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-12">
-                {{> dates}}
-                </div>
-            <div class="col-lg-12">
-                {{#panel title="Calendar"}}
-                    <div id="calendar"></div>
+                {{#panel}}
+                    <div align="center">
+                        <a class="btn btn-default" id="newDate" data-toggle="modal"
+                           data-target="#createModal">New date</a>
+                    </div>
+                    {{> fullcalendar
+                    events=events
+                    eventClick=onEventClicked
+                    id="calendar"
+                    header=calendarHeader
+                    options=calendarOptions
+                    }}
                 {{/panel}}
+            </div>
+            <div class="col-lg-3">
+                <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="color-line"></div>
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title">Create new date</h4>
+                                <small class="font-bold">Select your date!
+                                </small>
+                            </div>
+                            <div class="modal-body">
+                                {{>dates}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="cerrarBtn2" class="btn btn-default"
+                                        data-dismiss="modal">
+                                    Cerrar
+                                </button>
+                                <button type="submit" class="btn btn-primary">Guardar
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
