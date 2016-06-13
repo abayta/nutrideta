@@ -1,3 +1,27 @@
 <template name="dates">
-    {{> quickForm collection="Dates" id="insertDateForm" type="method" meteormethod="Dates.methods.insert" resetOnSuccess=true}}
+      
+        <div class="col-sm-12">
+            <div class="form-horizontal">
+                {{#autoForm collection="Dates" id="insertDateForm" type="method" meteormethod="Dates.methods.insert" resetOnSuccess=true}}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">Day:</label>
+                    <div class="col-sm-4">{{> afFieldInput name="day" class="form-control input-sm"}}</div>
+                    <label class="col-sm-3 control-label text-left">Hour:</label>
+                    <div class="col-sm-3">
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" value="">
+                            <span class="input-group-addon">
+                            <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <label class="col-sm-2 control-label text-left">Comment:</label>
+                    <div class="col-sm-10">{{> afFieldInput name="comment" type="textarea" }}</div>
+                </div>
+                {{/autoForm}}
+            </div>
+        </div>
+        
 </template>
+
+        

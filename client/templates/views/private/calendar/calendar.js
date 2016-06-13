@@ -24,7 +24,7 @@ Template.calendar.helpers({
     },
     calendarHeader: function () {
         return {
-            left: 'prev,next today myCustomButton',
+            left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay',
         }
@@ -38,6 +38,11 @@ Template.calendar.helpers({
 });
 
 Template.calendar.rendered = function () {
+    // ClockPicker
+    $('.clockpicker').clockpicker({autoclose: true});
+
+    // DateTimePicker
+    $('#datetimepicker1').datetimepicker();
     var fc = this.$('#calendar');
     this.autorun(function () {
         //1) trigger event re-rendering when the collection is changed in any way
@@ -52,11 +57,3 @@ AutoForm.addHooks(['insertDateForm'], {
         $('#cerrarBtn2').click();
     }
 })
-
-/*
-Template.calendar.events({
-    'click #newDate': function(event){
-        alert("Hola");
-    }
-});
-*/

@@ -63,6 +63,7 @@
                                                 </p>
                                             {{/if}}
                                         {{/with}}
+                                        <td id="final"></td>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -97,7 +98,7 @@
                                             {{> afFieldInput name="message" class="form-control"}}
                                             {{> afFieldInput type="hidden" name="recipient" value=activeChat}}
                                             <span class="input-group-btn">
-                            <button type="submit" id="createChatMessage" class="btn btn-success">
+                            <button type="submit" id="createChatMessage" class="btn btn-success" onclick="$('#final')[0].scrollIntoView();">
                                 Send
                             </button>
                         </span>

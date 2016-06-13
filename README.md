@@ -13,4 +13,15 @@ meteor
 This will grab the necessary packages, bundle all the css and js and start your application
 Go to http://localhost:3000 to see live version
 
+
+//Run
 meteor --port $IP:$PORT
+
+
+//Subir
+git add . 
+git commit -m "First commit"
+git push
+
+//Update
+git pull
