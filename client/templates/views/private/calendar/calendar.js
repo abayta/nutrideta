@@ -8,9 +8,16 @@ Template.calendar.helpers({
         return function (start, end, tz, callback) {
             //find all, because we've already subscribed to a specific range
             var events = Dates.find().map(function (it) {
+                var day = moment(it.day).format('YYYY-MM-DD');
+                var startDate = day.concat("T"+it.hour);
+                var endDate = moment(startDate).add(20, 'm');
+                var user = Meteor.users.findOne({_id: it.client[0]});
+                var email = user.emails[0].address;
                 return {
-                    title: it.client,
-                    start: it.day.toISOString(),
+                    title: email,
+                    idDate: it._id,
+                    start: startDate,
+                    end: endDate,
                     allDay: false
                 };
             });
@@ -19,7 +26,8 @@ Template.calendar.helpers({
     },
     onEventClicked: function () {
         return function (calEvent, jsEvent, view) {
-            alert("Event clicked: " + calEvent.title);
+            var date = Dates.findOne({_id: calEvent.idDate});
+            alert(date.comment);
         }
     },
     calendarHeader: function () {

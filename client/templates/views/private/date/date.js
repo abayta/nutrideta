@@ -9,3 +9,9 @@ AutoForm.addHooks(['insertDateForm'], {
         });
     }
 })
+
+AutoForm.addHooks(null, {
+    onError: function (name, error, template) {
+        console.log(name + " error:", error);
+    }
+});
