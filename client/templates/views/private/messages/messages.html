@@ -105,7 +105,7 @@
 
                                     <tbody>
                                     {{#each messages}}
-                                        <tr class="{{#if viewed}}unread{{/if}}">
+                                        <tr class="view {{#if viewed}}unread{{/if}}" id={{_id}}>
                                             <td>
                                                 <div class="checkbox">
                                                     <input type="checkbox">

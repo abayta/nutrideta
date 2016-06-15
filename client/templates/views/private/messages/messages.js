@@ -8,9 +8,6 @@ Template.messages.events({
         if (optionId == "createMessage") {
             Session.set("messages", optionId);
             Session.set("activeMessages", "usersAvailableMessage");
-        } else if (optionId == "viewMessage") {
-            Session.set("messages", optionId);
-            Session.set("activeMessages", "none");
         } else {
             Session.set("messages", "mailbox");
             Session.set("activeMessages", optionId);
@@ -20,7 +17,13 @@ Template.messages.events({
             $("#" + obj.id).removeClass('active');
         });
         $("#" + optionId).addClass('active')
-    }
+    },
+    'click .view': function (event) {
+        var optionId = event.currentTarget.id;
+            Session.set("messages", "viewMessage");
+            Session.set("activeMessages", optionId);
+    },
+    
 });
 
 Template.messages.helpers({
@@ -32,7 +35,11 @@ Template.messages.helpers({
 
 Template.messages.onCreated(function messagesOnCreated() {
     this.autorun(() => {
+        if (Session.get("messages") == "viewMessage"){
+            Meteor.subscribe('findMessage', Session.get("activeMessages"));
+        } else {
         Meteor.subscribe(Session.get("activeMessages"));
+        }
     });
 });
 
@@ -66,7 +73,12 @@ Template.mailbox.helpers({
     },
     senderName: function (id) {
         var user = ReactiveMethod.call('findUser', id);
-        return user.username;
+        if(user != undefined){
+              return user.username;
+           }else{
+               return 'Loading...';
+           }
+        
     }
 });
 

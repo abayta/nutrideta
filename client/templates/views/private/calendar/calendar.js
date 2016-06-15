@@ -27,7 +27,8 @@ Template.calendar.helpers({
     onEventClicked: function () {
         return function (calEvent, jsEvent, view) {
             var date = Dates.findOne({_id: calEvent.idDate});
-            alert(date.comment);
+            var user = Meteor.users.findOne({_id: date.client[0]});
+            alert("Client: "+user.userProfile.firstName+"\n"+"Username: "+user.username+"\n"+"Email: "+user.emails[0].address+"\n"+"Comment: "+date.comment);
         }
     },
     calendarHeader: function () {

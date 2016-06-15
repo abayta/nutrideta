@@ -4,6 +4,7 @@
 
 AutoForm.addHooks(['insertDateForm'], {
     onSuccess: function(formType, result) {
+        toastr.success('Success - A new date have been added!');
         $('select').each(function() { //Select2 doesnt clear on its own
             $(this).select2('val', '');
         });

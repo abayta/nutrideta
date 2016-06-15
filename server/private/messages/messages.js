@@ -44,3 +44,7 @@ Meteor.publish('private', function () {
     });
 });
 
+Meteor.publish('findMessage', function (id) {
+    return Messages.find({_id: id});
+});
+
