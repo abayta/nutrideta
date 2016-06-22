@@ -30,12 +30,9 @@ alanning:roles
 email
 momentjs:moment
 sacha:spin
-meteorhacks:kadira
 meteorhacks:npm
 aldeed:collection2
 cfs:standard-packages
-msavin:mongol
-msavin:jetsetter
 aldeed:simple-schema
 aldeed:autoform
 zimme:active-route
@@ -57,3 +54,4 @@ zuuk:stale-session
 rzymek:fullcalendar
 andrasph:clockpicker
 tsega:bootstrap3-datetimepicker
+meteortoys:allthings
