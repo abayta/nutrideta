@@ -22,7 +22,7 @@ if (Meteor.isClient) {
                         //Añadimos el nutricionista al cliente
                         Meteor.call('addNutricionistToClient', result);
                         //Return to clients view
-                        Session.set("activeClients","allClients");
+                        Session.set("clients","allClients");
                         Router.go('/clients');
 
                         swal({

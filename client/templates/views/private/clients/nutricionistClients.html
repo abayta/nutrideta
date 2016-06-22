@@ -4,7 +4,7 @@
         <div class="col-lg-3">
             <div class="hpanel hgreen contact-panel">
                 <div class="panel-body">
-                    <span class="label label-success pull-right">NEW</span>
+                    <span class="stats label label-success pull-right" id="{{_id}}" style="cursor: pointer">STATS</span>
                     {{> avatar shape="circle" initials="NW" class="img-circle m-b"}}
                     <h3><a href=""> {{username}} </a></h3>
                     {{#each emails}}
@@ -161,3 +161,4 @@
 
     </div>
 </template>
+

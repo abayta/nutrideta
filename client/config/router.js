@@ -147,7 +147,7 @@ Router.route('/messages', function () {
 // Clients route
 
 Router.route('/clients', function () {
-    Session.set("activeClients", "allClients");
+    Session.set("clients", "allClients");
     Meteor.subscribe('clientsByNutritionist');
     this.render('clients');
 })
