@@ -41,6 +41,7 @@ Template.calendar.helpers({
     calendarOptions: function () {
         return {
             defaultEventMinutes: 20,
+            contentHeight: 'auto',
             timezone: "Europe/Madrid"
         }
     },

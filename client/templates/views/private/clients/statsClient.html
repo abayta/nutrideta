@@ -47,4 +47,14 @@
 
         </div>
     </div>
+    <div class="row">
+        {{> quickForm collection="Stats" id="insertStatClient" type="insert"}}
+        <div class="col-lg-12">
+            {{#panel title="Line type chart without curve"}}
+                <div>
+                    <canvas id="sharpLineOptions" height="140"></canvas>
+                </div>
+            {{/panel}}
+        </div>
+    </div>
 </template>
