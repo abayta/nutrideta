@@ -6,17 +6,19 @@
 
                 <div class="row">
                     <div class="col-md-3 text-center">
-                        <div class="small">
-                            <i class="fa fa-bolt"></i> Page views
+                        <div class="big">
+                            <i class="fa fa-user"></i> Client:
                         </div>
                         <div>
-                            <h1 class="font-extra-bold m-t-xl m-b-xs">
+                            <h1 class="font-extra-bold m-t-xl m-b-xs" style="font-weight: normal">
                                 {{client.username}}
                             </h1>
-                            <small>Page views in last month</small>
+                            {{#if client.userProfile.firstName}}
+                            <small>{{client.userProfile.firstName}} {{client.userProfile.lastName}}</small>
+                            {{/if}}
                         </div>
-                        <div class="small m-t-xl">
-                            <i class="fa fa-clock-o"></i> Data from January
+                        <div class="big m-t-xl">
+                            <i class="fa fa-envelope-o"></i> {{client.emails.[0].address}}
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -28,17 +30,16 @@
                         </div>
                     </div>
                     <div class="col-md-3 text-center">
-                        <div class="small">
-                            <i class="fa fa-clock-o"></i> Active duration
+                        <div class="big">
+                            <i class="fa fa-clock-o"></i> Member since:
                         </div>
                         <div>
-                            <h1 class="font-extra-bold m-t-xl m-b-xs">
-                                10 Months
+                            <h1 class="font-extra-bold m-t-xl m-b-xs" style="font-weight: normal">
+                                {{memberSinceNow}}
                             </h1>
-                            <small>And four weeks</small>
                         </div>
-                        <div class="small m-t-xl">
-                            <i class="fa fa-clock-o"></i> Last active in 12.10.2015
+                        <div class="big m-t-xl">
+                            <i class="fa fa-user"></i> {{memberJoin}}
                         </div>
                     </div>
                 </div>

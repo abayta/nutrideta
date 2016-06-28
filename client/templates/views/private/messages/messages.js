@@ -78,8 +78,10 @@ Template.mailbox.helpers({
            }else{
                return 'Loading...';
            }
-        
-    }
+    },
+    dateSended: function (date) {
+        return moment(date).format('DD MMMM YYYY');
+    },
 });
 
 

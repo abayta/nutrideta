@@ -73,8 +73,8 @@
                         <div class="row">
                             <div class="col-md-6 m-b-md">
                                 <div class="btn-group">
-                                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Delete
-                                    </button>
+<!--                                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Delete
+                                    </button>-->
                                 </div>
                             </div>
                             <div class="col-md-6 mailbox-pagination m-b-md">
@@ -93,11 +93,10 @@
                                 {{#if this.count}}
                                     <thead>
                                     <tr>
-                                        <th></th>
+<!--                                        <th></th>-->
                                         <th>Sender</th>
                                         <th>Subject</th>
-                                        <th>Attachment</th>
-                                        <th class="text-right">Time</th>
+                                        <th class="text-right">Date</th>
                                     </tr>
                                     </thead>
 
@@ -106,17 +105,16 @@
                                     <tbody>
                                     {{#each messages}}
                                         <tr class="view {{#if viewed}}unread{{/if}}" id={{_id}}>
-                                            <td>
+<!--                                            <td>
                                                 <div class="checkbox">
                                                     <input type="checkbox">
                                                     <label></label>
                                                 </div>
-                                            </td>
+                                            </td>-->
                                             <td><a href="#">{{senderName sender}}</a></td>
                                             <td><a href="#">{{title}}</a>
                                             </td>
-                                            <td></td>
-                                            <td class="text-right mail-date">Tue, Nov 25</td>
+                                            <td class="text-right mail-date">{{dateSended createdAt}}</td>
                                         </tr>
                                     {{/each}}
                                     </tbody>

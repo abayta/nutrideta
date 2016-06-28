@@ -2,6 +2,13 @@
  * Created by a618052 on 17/06/2016.
  */
 
+
+Template.statsClient.onCreated(function chatOnCreated() {
+    this.autorun(() => {
+        this.subscribe('statsByClient');
+    });
+});
+
 Template.statsClient.onRendered(function () {
 
 // Flot charts data and options
@@ -27,6 +34,12 @@ Template.statsClient.onRendered(function () {
     };
 
     $.plot($("#flot-line-chart"), [data1], chartUsersOptions);
+
+    var stats = Stats.find();
+
+    var arrayStats = stats.map(function (stat) {
+        return stat.weight;
+    });
 
     // Options for Sharp Line chart
     var sharpLineData = {
@@ -69,5 +82,17 @@ Template.statsClient.helpers({
     'client': function () {
         var currentUserId = Session.get("activeClients");
         return Meteor.users.findOne({_id: currentUserId});
-    }
+    },
+    'memberSinceNow': function () {
+        var currentUserId = Session.get("activeClients");
+        var user = Meteor.users.findOne({_id: currentUserId});
+        var date = user.createdAt;
+        var since = moment(date).fromNow();
+        return since;
+    },
+    'memberJoin': function () {
+        var currentUserId = Session.get("activeClients");
+        var user = Meteor.users.findOne({_id: currentUserId});
+        return moment(user.createdAt).format('DD-MM-YYYY HH:mm');
+    },
 });

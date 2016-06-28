@@ -18,7 +18,15 @@ Meteor.methods({
     //@Method que busca un user en la bd
     findUser: function (id) {
         check(id, String);
-
         return Meteor.users.findOne(id);
     },
+    findRecipientsById: function (recipients) {
+        var asc = "asd";
+        var users = Meteor.users.find({ _id: { $in: recipients } });
+        return Meteor.users.find({ _id: { $in: recipients } }, {
+            fields: {
+                username: 1
+            }
+        });
+    }
 })

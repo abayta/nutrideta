@@ -19,5 +19,5 @@ Meteor.methods({
 
 Meteor.publish('clientsByNutritionist', function(){
     var currentUser = this.userId;
-    return Meteor.users.find({ nutricionistId: currentUser}, {fields: {username:1, 'emails.address':1, 'userProfile.firstName':1, 'userProfile.bio':1}, sort: {createdAt: 1}, limit: 10});
+    return Meteor.users.find({ nutricionistId: currentUser}, {fields: {username:1, createdAt:1, 'emails.address':1, 'userProfile.firstName':1,'userProfile.lastName':1, 'userProfile.bio':1}, sort: {createdAt: 1}, limit: 10});
 });

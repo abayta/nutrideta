@@ -1,41 +1,49 @@
 <template name="viewMessage">
-<div class="col-md-9">
-    <div class="hpanel email-compose">
-        <div class="panel-heading hbuilt">
+    <div class="col-md-9">
+        <div class="hpanel email-compose">
+            <div class="panel-heading hbuilt">
 
-            <div class="p-xs h4">
-                <small class="pull-right">
-                    08:26 PM (16 hours ago)
-                </small>
-                Email view
+                <div class="p-xs h4">
+                    <small class="pull-right">
+                        {{dateFromNow}}
+                    </small>
+                    Email view
 
-            </div>
-        </div>
-        <div class="border-top border-left border-right bg-light">
-            <div class="p-m">
-                <div>
-                    <span class="font-extra-bold">Subject: </span>
-                    {{message.title}}
-                </div>
-                <div>
-                    <span class="font-extra-bold">Category: </span>
-                    {{message.category}}
-                </div>
-                <div>
-                    <span class="font-extra-bold">From: </span>
-                    <a href="#">example.@email.com</a>
-                </div>
-                <div>
-                    <span class="font-extra-bold">Date: </span>
-                    {{message.createdAt}}
                 </div>
             </div>
-        </div>
-        <div class="panel-body">
-            <div>
-                {{{message.message}}}
+            <div class="border-top border-left border-right bg-light">
+                <div class="p-m">
+                    <div>
+                        <span class="font-extra-bold">Subject: </span>
+                        {{message.title}}
+                    </div>
+                    <div>
+                        <span class="font-extra-bold">Category: </span>
+                        {{message.category}}
+                    </div>
+                    <div>
+                        <span class="font-extra-bold">From: </span>
+                        {{senderName message.sender}}
+                    </div>
+                    <div>
+                        <span class="font-extra-bold">To: </span>
+<!--                        {{#each recipientsNames}}
+                            1
+                            {{/each}}-->
+
+                        {{recipientsNames.username}}
+                    </div>
+                    <div>
+                        <span class="font-extra-bold">Date: </span>
+                        {{dateSended}}
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div>
+                    {{{message.message}}}
+                </div>
             </div>
         </div>
     </div>
-</div>
 </template>
