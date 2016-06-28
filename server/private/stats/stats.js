@@ -3,5 +3,5 @@
  */
 
 Meteor.publish('statsByClient', function(id) {
-    return Stats.find({createdBy: id}, {sort: {createdAt: 1}});
+    return Stats.find({userId: id}, {sort: {createdAt: 1}});
 });

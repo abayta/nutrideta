@@ -23,7 +23,7 @@ Template.clients.helpers({
     active: function () {
         var active = Session.get("clients");
         if (active === 'statsClient') {
-            Meteor.subscribe('statsByClient');
+            Meteor.subscribe('statsByClient', Session.get('activeClients'));
         }
         return Template[active];
     },
