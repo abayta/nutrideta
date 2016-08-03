@@ -1,16 +1,52 @@
 <template name="listIngredients">
+    <div class="normalheader transition animated fadeIn">
+        <div class="hpanel">
+            <div class="panel-body">
+                <a class="small-header-action" href="">
+                    <div class="clip-header">
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </a>
+
+                <!--<div id="hbreadcrumb" class="pull-right m-t-lg">-->
+                    <!--<ol class="hbreadcrumb breadcrumb">-->
+                        <!--<li><a href="index.html">Lista alimentos</a></li>-->
+                        <!--<li>-->
+                            <!--<span>App views</span>-->
+                        <!--</li>-->
+                        <!--<li class="active">-->
+                            <!--<span>Contacts</span>-->
+                        <!--</li>-->
+                    <!--</ol>-->
+                <!--</div>-->
+                <h2 class="font-light m-b-xs">
+                    Lista alimentos
+                </h2>
+                <small>Lista de todos los alimentos del sistema</small>
+            </div>
+        </div>
+    </div>
+
+
   <div class="content">
     {{#each ingredients}}
-      <div class="col-md-3">
-        <div class="hpanel panel-group">
-          <div class="panel-body">
-            <a href="#{{_id}}" data-toggle="tab" onclick="closeFirst({{_id}})">
-                <small class="text-muted">{{name}}</small>
-                <h5>{{calories}}</h5>
-            </a>
-          </div>
+        <div class="col-lg-3" style="">
+            <div class="hpanel hgreen contact-panel">
+                <div class="panel-body">
+                    <h3><a href=""> {{name}} </a></h3>
+                    <div class="text-muted font-bold m-b-xs">Calorias: {{calories}}</div>
+                </div>
+                <div class="panel-footer contact-footer">
+                    <div class="row">
+                        <div class="col-md-4 border-right" style=""> <div class="contact-stat"><span>Proteinas: </span> <strong>{{proteins}}</strong></div> </div>
+                        <div class="col-md-4 border-right" style=""> <div class="contact-stat"><span>Hidratos: </span> <strong>{{hydrates}}</strong></div> </div>
+                        <div class="col-md-4" style=""> <div class="contact-stat"><span>Grasas: </span> <strong>{{fat}}</strong></div> </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     {{/each}}
   </div>
 </template>
+
+
