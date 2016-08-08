@@ -40,3 +40,11 @@ Template.searchBox.events({
   }, 200)
 });
 
+AutoForm.addHooks(['insertRecipeForm'], {
+    onSuccess: function(formType, result) {
+        $('select').each(function() { //Select2 doesnt clear on its own
+            $(this).select2('val', '');
+        });
+    }
+})
+

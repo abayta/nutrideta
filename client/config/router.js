@@ -191,6 +191,7 @@ Router.route('calendar', {
 //TEST ROUTE ABA RECIPES
 
 Router.route('/createRecipe', function () {
+    Meteor.subscribe('ingredients');
     this.render('createRecipe');
 });
 
