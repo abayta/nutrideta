@@ -200,8 +200,19 @@ Router.route('/createIngredient', {
     before: [filters.authenticate, filters.nutricionista]
 });
 
-Router.route('/listIngredients', function () {
-    this.render('listIngredients');
+Router.route('/listIngredients', {
+    template: 'listIngredients',
+    before: [filters.authenticate]
+});
+
+Router.route('/listRecipes', {
+    template: 'listRecipes',
+    before: [filters.authenticate, filters.nutricionista]
+});
+
+Router.route('/createDiet', {
+    template: 'createDiet',
+    before: [filters.authenticate, filters.nutricionista]
 });
 
 

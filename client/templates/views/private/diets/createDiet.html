@@ -1,0 +1,15 @@
+<template name="createDiet">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        {{>quickForm schema="dietsSchemaForm" id="insertDietForm" type="method" meteormethod="Diets.methods.insert"}}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</template>
