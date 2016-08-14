@@ -1,0 +1,54 @@
+<template name="recipeItem">
+    <div class="col-lg-6" style="">
+        <div class="hpanel hgreen">
+            <div class="panel-body">
+                <span class="label label-success pull-right">NEW</span>
+                <div class="row">
+                    <div class="col-sm-8" style="">
+                        <h4><a href="">{{name}}</a></h4>
+
+                        <p>
+                            {{description}}
+                        </p>
+
+                        <div class="row">
+                            <div class="col-sm-3" style="">
+                                <div class="project-label">Kcal</div>
+                                <small>{{energy}}</small>
+                            </div>
+                            <div class="col-sm-3" style="">
+                                <div class="project-label">Proteinas</div>
+                                <small>{{protein}}</small>
+                            </div>
+                            <div class="col-sm-3" style="">
+                                <div class="project-label">Hidratos</div>
+                                <small>{{carbohydrates}}</small>
+                            </div>
+                            <div class="col-sm-3" style="">
+                                <div class="project-label">Grasas</div>
+                                <small>{{fats}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 project-info" style="">
+                        <div class="project-action m-t-md">
+                            <div class="btn-group">
+                                <button class="btn btn-xs btn-default"> View</button>
+                                <button class="btn btn-xs btn-default"> Edit</button>
+                                <button class="btn btn-xs btn-default bt-delete"> Delete</button>
+                            </div>
+                        </div>
+                        <div class="project-value">
+                            <h2 class="text-success">
+                                $1 206,40
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                Additional information about project in footer
+            </div>
+        </div>
+    </div>
+</template>
