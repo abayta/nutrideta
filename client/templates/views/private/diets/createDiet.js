@@ -1,7 +1,7 @@
 AutoForm.addHooks('insertDietForm', {
-    onSubmit: function (doc) {
-        dietsSchemaForm.clean(doc);
-        console.log("Diet doc with auto values", doc);
+    OnSubmit: function () {
+        dietsSchemaForm.clean(this.currentDoc);
+        console.log("Diet doc with auto values", this.currentDoc);
         this.done();
         return false;
     },
