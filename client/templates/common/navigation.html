@@ -58,14 +58,26 @@
                     <li class="{{isActiveRoute regex='chat'}}">
                         <a href="{{pathFor route='chat'}}"> <span class="nav-label">Chat</span></a>
                     </li>
-                    <li class="{{isActiveRoute regex='listIngredients'}}">
-                        <a href="{{pathFor route='listIngredients'}}"> <span class="nav-label">Lista Ingredientes</span></a>
+                    <li class="{{isActiveRoute regex='ingredients'}}">
+                        <a href="#">Ingredientes</a>
+                        <ul class="nav nav-second-level collapse" aria-expanded="false">
+                            <li><a href="{{pathFor route='listIngredients'}}"><span class="nav-label">Lista Ingredientes</span></a></li>
+                            <li><a href="{{pathFor route='createIngredient'}}"> <span class="nav-label">Crear Ingrediente</span></a></li>
+                        </ul>
                     </li>
-                    <li class="{{isActiveRoute regex='createIngredient'}}">
-                        <a href="{{pathFor route='createIngredient'}}"> <span class="nav-label">Crear Ingrediente</span></a>
+                    <li class="{{isActiveRoute regex='recipes'}}">
+                        <a href="#">Recetas</a>
+                        <ul class="nav nav-second-level collapse" aria-expanded="false">
+                            <li><a href="{{pathFor route='createRecipe'}}"><span class="nav-label">Nueva receta</span></a></li>
+                            <li><a href="{{pathFor route='listRecipes'}}"> <span class="nav-label">Mis recetas</span></a></li>
+                        </ul>
                     </li>
-                    <li class="{{isActiveRoute regex='listRecipes'}}">
-                        <a href="{{pathFor route='listRecipes'}}"> <span class="nav-label">Mis recetas</span></a>
+                    <li class="{{isActiveRoute regex='diets'}}">
+                        <a href="#">Dietas</a>
+                        <ul class="nav nav-second-level collapse" aria-expanded="false">
+                            <li><a href="{{pathFor route='createDiet'}}"><span class="nav-label">Nueva dieta</span></a></li>
+                            <li><a href="{{pathFor route='listDiets'}}"><span class="nav-label">Mis dietas</span></a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
