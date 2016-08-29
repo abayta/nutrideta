@@ -127,7 +127,7 @@
                             {{#each notes}}
                                 <div class="panel-body note-link">
                                     <a href="#{{_id}}" data-toggle="tab" onclick="closeFirst()">
-                                        <small class="pull-right text-muted">{{createdAt}}</small>
+                                        <small class="pull-right text-muted">{{formatDate createdAt}}</small>
                                         <h5>{{titulo}}</h5>
                                     </a>
                                 </div>
@@ -143,7 +143,7 @@
                                 {{#each notes}}
                                     <div id="{{_id}}" class="tab-pane">
                                         <div class="pull-right text-muted m-l-lg">
-                                            <a id="fechaNota">{{createdAt}}</a>
+                                            <a id="fechaNota">{{formatDate createdAt}}</a>
                                         </div>
                                         <h3 id="tituloNota">{{titulo}}</h3>
                                         <hr/>

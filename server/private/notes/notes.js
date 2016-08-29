@@ -17,7 +17,7 @@ Meteor.methods({
 
         Notes.insert({
             createdBy: Meteor.userId(),
-            createdAt: moment(new Date()).format('DD-MM-YYYY'),
+            createdAt: new Date(),
             titulo: titulo,
             descripcion: descripcion
         })
