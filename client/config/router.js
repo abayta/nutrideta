@@ -215,7 +215,32 @@ Router.route('/createDiet', {
     before: [filters.authenticate, filters.nutricionista]
 });
 
+Router.route('/listDiets', {
+    template: 'listDiets',
+    before: [filters.authenticate, filters.nutricionista]
+});
 
+Router.route('/detailsDiet/:_id', {
+    // template: 'detailsDiet',
+    name: 'detailsDiet',
+    waitOn: function () {
+        return [Meteor.subscribe('oneDiet',this.params._id),
+            Meteor.subscribe('daysOfDiet', this.params._id),
+            Meteor.subscribe('mealsOfDiet',this.params._id),
+            Meteor.subscribe('recipes')];},
+    data: function() {return Diets.findOne(this.params._id)},
+    before: [filters.authenticate, filters.nutricionista]
+});
+
+Router.route('/detailsRecipe/:_id', {
+    // template: 'detailsDiet',
+    name: 'detailsRecipe',
+    waitOn: function () {
+        return [Meteor.subscribe('oneRecipe',this.params._id),
+            Meteor.subscribe('ingredientsOfRecipe', this.params._id)];},
+    data: function() {return Recipes.findOne(this.params._id)},
+    before: [filters.authenticate, filters.nutricionista]
+});
 // Global - Remove splash screen after rendered layout
 
 Router.onAfterAction(function () {
