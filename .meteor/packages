@@ -56,3 +56,7 @@ andrasph:clockpicker
 tsega:bootstrap3-datetimepicker
 meteortoys:allthings
 raix:handlebar-helpers
+meteorhacks:cluster
+dburles:collection-helpers
+anti:gagarin@=0.4.12
+reactive-var

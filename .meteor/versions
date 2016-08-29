@@ -10,6 +10,7 @@ aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
 aldeed:template-extension@3.4.3
 andrasph:clockpicker@0.0.2
+anti:gagarin@0.4.12
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -41,6 +42,7 @@ cfs:worker@0.1.4
 check@1.1.0
 chrismbeckett:toastr@2.1.2_1
 coffeescript@1.0.11
+dburles:collection-helpers@1.0.4
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
@@ -84,6 +86,7 @@ mdg:validation-error@0.4.0
 meteor@1.1.10
 meteor-base@1.0.1
 meteorhacks:async@1.0.0
+meteorhacks:cluster@1.6.9
 meteorhacks:inject-initial@1.0.4
 meteorhacks:npm@1.5.0
 meteorhacks:picker@1.0.3
