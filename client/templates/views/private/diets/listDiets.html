@@ -1,0 +1,107 @@
+<template name="listDiets">
+    <div class="normalheader transition animated fadeIn">
+        <div class="hpanel">
+            <div class="panel-body">
+                <!--<div id="hbreadcrumb" class="pull-right m-t-lg">-->
+                <!--<ol class="hbreadcrumb breadcrumb">-->
+                <!--<li><a href="index.html">Dashboard</a></li>-->
+                <!--<li>-->
+                <!--<span>App views</span>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                <!--<span>Projects</span>-->
+                <!--</li>-->
+                <!--</ol>-->
+                <!--</div>-->
+                <h2 class="font-light m-b-xs">
+                    Dietas
+                </h2>
+                <small>Lista de dietas</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="content animate-panel">
+        {{> searchDiets}}
+    </div>
+
+</template>
+
+
+<template name="searchDiets">
+    {{> searchBoxDiets}}
+    {{> searchResultDiets}}
+</template>
+
+<template name="searchBoxDiets">
+    <div class="form-group" data-required="true">
+        <input type="text" id="search-box" class="form-control" placeholder="Search diets here">
+    </div>
+</template>
+
+<template name="searchResultDiets">
+    <div id="search-result">
+        <div id="search-meta">
+            {{#if isLoading}}
+                searching...
+            {{/if}}
+        </div>
+
+        {{#each getDiets}}
+            {{> dietItem}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="dietItem">
+    <div class="col-lg-6" style="">
+        <div class="hpanel hgreen">
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-sm-8" style="">
+                        <h4><a href="">{{title}}</a></h4>
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-xs btn-default bt-view"> View</button>
+                            <button class="btn btn-xs btn-default bt-delete"> Delete</button>
+                        </div>
+                        <p>
+                            {{description}}
+                        </p>
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-xs-4" style="">-->
+                                <!--<div class="project-label">Proteinas</div>-->
+                                <!--<small>{{protein}}</small>-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-4" style="">-->
+                                <!--<div class="project-label">Hidratos</div>-->
+                                <!--<small>{{carbohydrates}}</small>-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-4" style="">-->
+                                <!--<div class="project-label">Grasas</div>-->
+                                <!--<small>{{fats}}</small>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="col-sm-4 project-info" style="">
+                        <!--<div class="project-action m-t-md">-->
+                        <!--<div class="btn-group">-->
+                        <!--<button class="btn btn-xs btn-default bt-view"> View</button>-->
+                        <!--<button class="btn btn-xs btn-default bt-delete"> Delete</button>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="project-value">
+                            <h2 class="text-success">
+                                {{energyPerDay}}Kcal
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                Additional information about project in footer
+            </div>
+        </div>
+    </div>
+</template>

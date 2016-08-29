@@ -1,0 +1,61 @@
+<template name="detailsDiet">
+    <div class="normalheader transition animated fadeIn">
+        <div class="hpanel">
+            <div class="panel-body">
+                {{#autoForm schema="dietsSchemaAssign" id=dietId type="method" meteormethod="Diets.methods.assign"}}
+                    <div class="col-lg-9">{{> afQuickField name='cliente'}}</div>
+                    <div class="col-lg-3">{{> afQuickField name='startDate'}}</div>
+                {{/autoForm}}
+                <!--<div id="hbreadcrumb" class="pull-right m-t-lg">-->
+                <!--<ol class="hbreadcrumb breadcrumb">-->
+                <!--<li><a href="index.html">Dashboard</a></li>-->
+                <!--<li>-->
+                <!--<span>App views</span>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                <!--<span>Projects</span>-->
+                <!--</li>-->
+                <!--</ol>-->
+                <!--</div>-->
+                <h2 class="font-light m-b-xs">
+                    {{title}}
+
+                </h2>
+                <small>{{description}}</small>
+            </div>
+        </div>
+    </div>
+    <div class="content animate-panel">
+        {{#each this.days}}
+            <div class="col-lg-12" style="">
+                <div class="hpanel hyellow">
+                    <div class="panel-body">
+                        <div class="row">
+                            {{#each this.meals}}
+                                {{> meal}}
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        Additional information about project in footer
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</template>
+
+<template name="meal">
+    <div class="col-sm-2" style="">
+        <h4><a href="">{{name}}</a><i style="float: right;" class="pe-7s-note bt-add"></i></h4>
+        <ol>
+        {{#each recipes}}
+            <li>{{name}}</li>
+        {{/each}}
+        </ol>
+        {{#if editMode}}
+            {{> quickForm schema="mealsSchemaForm" doc=this singleMethodArgument=true id=addRecipeFormId type="method-update" meteormethod="Diets.methods.addRecipe"}}
+        {{/if}}
+    </div>
+
+</template>
