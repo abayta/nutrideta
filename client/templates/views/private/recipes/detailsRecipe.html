@@ -1,0 +1,101 @@
+<template name="detailsRecipe">
+    <div class="normalheader transition">
+        <div class="hpanel">
+            <div class="panel-body">
+                <a class="small-header-action" href="">
+                    <div class="clip-header">
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </a>
+
+                <!--<div id="hbreadcrumb" class="pull-right m-t-lg">-->
+                    <!--<ol class="hbreadcrumb breadcrumb">-->
+                        <!--<li><a href="index.html">Dashboard</a></li>-->
+                        <!--<li>-->
+                            <!--<span>Tables</span>-->
+                        <!--</li>-->
+                        <!--<li class="active">-->
+                            <!--<span>Project detail</span>-->
+                        <!--</li>-->
+                    <!--</ol>-->
+                <!--</div>-->
+                <h2 class="font-light m-b-xs">
+                    {{name}}
+                </h2>
+                <small>{{description}}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="content animate-panel">
+
+        <div class="row">
+
+            <div class="col-md-8" style="">
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <!--<div class="pull-right">-->
+                            <!--<button class="btn btn-success btn-xs">  Active</button>-->
+                            <!--<button class="btn btn-default btn-xs"> <i class="fa fa-pencil"></i> Edit</button>-->
+                        <!--</div>-->
+                        <h2 class="m-t-none">Preparación </h2>
+                        <p>{{preparation}}</p>
+
+                    </div>
+                </div>
+
+                <div class="font-bold m-b-sm">
+                    Ingredientes
+                </div>
+                <div class="hpanel">
+
+                    <div class="panel-body">
+                        <ol>
+                            {{#each ingredients}}
+                                <li><span>{{name}} - {{quantity}}</span></li>
+                            {{/each}}
+                        </ol>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4" style="">
+
+                <div class="font-bold m-b-sm">
+                    Valores nutricionales
+                </div>
+
+                <div class="hpanel stats">
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-xs-6" style="">
+                                <p class="stat-label">Kcal</p>
+                                <h4>{{energy}}<i class="fa fa-level-up text-success"></i></h4>
+                            </div>
+                            <div class="col-xs-6" style="">
+                                <p class="stat-label">Proteinas</p>
+                                <h4>{{protein}} <i class="fa fa-level-up text-success"></i></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6" style="">
+                                <p class="stat-label">Hidratos</p>
+                                <h4>{{carbohydrates}}<i class="fa fa-level-up text-success"></i></h4>
+                            </div>
+                            <div class="col-xs-6" style="">
+                                <p class="stat-label">Grasas</p>
+                                <h4>{{fats}} <i class="fa fa-level-up text-success"></i></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</template>

@@ -5,5 +5,7 @@ Template.recipeItem.events({
    'click .bt-delete': function () {
        console.log('Aqui entra',this);
        Meteor.call('Recipes.methods.remove', {_id: this._id});
-   }
+   },"click .bt-view": function () {
+        Router.go("detailsRecipe", {_id:this._id});
+    }
 });
